@@ -1,0 +1,139 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775084050260,
+  "projectRoot": "C:\\.temp_private\\cordocu",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "next",
+        "version": "14.2.0",
+        "category": "fullstack"
+      },
+      {
+        "name": "react",
+        "version": "18.3.0",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "18.3.0",
+        "category": "frontend"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": "ES modules",
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "app",
+      "lib",
+      "public"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "app": {
+      "path": "app",
+      "purpose": "Application code",
+      "fileCount": 2,
+      "lastAccessed": 1775084050222,
+      "keyFiles": [
+        "layout.tsx",
+        "page.tsx"
+      ]
+    },
+    "lib": {
+      "path": "lib",
+      "purpose": "Library code",
+      "fileCount": 2,
+      "lastAccessed": 1775084050239,
+      "keyFiles": [
+        "supabase-server.ts",
+        "supabase.ts"
+      ]
+    },
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 2,
+      "lastAccessed": 1775084050240,
+      "keyFiles": [
+        "corteqs_dashboard.html",
+        "status.html"
+      ]
+    },
+    "supabase": {
+      "path": "supabase",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1775084050240,
+      "keyFiles": [
+        "config.toml"
+      ]
+    },
+    "app\\api": {
+      "path": "app\\api",
+      "purpose": "API routes",
+      "fileCount": 0,
+      "lastAccessed": 1775084050241,
+      "keyFiles": []
+    },
+    "supabase\\migrations": {
+      "path": "supabase\\migrations",
+      "purpose": "Database migrations",
+      "fileCount": 2,
+      "lastAccessed": 1775084050242,
+      "keyFiles": [
+        "20260401223041_create_gorevler.sql",
+        "20260401224617_create_draft_notlar.sql"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "public\\corteqs_dashboard.html",
+      "accessCount": 8,
+      "lastAccessed": 1775084120738,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p C:/.temp_private/cordocu/public C:/.temp_private/cordocu/app C:/.temp_private/cordocu/lib)",
+      "Bash(mv C:/.temp_private/cordocu/corteqs_dashboard.html C:/.temp_private/cordocu/public/)",
+      "Bash(mv C:/.temp_private/cordocu/status.html C:/.temp_private/cordocu/public/)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(supabase:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}

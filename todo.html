@@ -1,0 +1,142 @@
+﻿<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corteqs - Landing TODO</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #112240;
+      --muted: #4b5d79;
+      --accent: #0ea5e9;
+      --ok: #16a34a;
+      --border: #dbe5f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(180deg, #eef5ff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(17, 34, 64, 0.08);
+      margin-bottom: 16px;
+    }
+    h1, h2 { margin: 0 0 10px; }
+    p { margin: 0 0 10px; color: var(--muted); }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 860px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(17, 34, 64, 0.06);
+    }
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    li { margin: 7px 0; }
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 5px 10px;
+      margin-right: 6px;
+      background: #e0f2fe;
+      color: #075985;
+    }
+    .done {
+      color: var(--ok);
+      font-weight: 700;
+    }
+    .footer {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Corteqs Landing Page TODO</h1>
+      <p>
+        Kaynak: <code>landing.txt</code>. Amaç; mevcut organik ilgiyi kaybetmeden waitlist toplamak,
+        erken kullanıcıları segmente etmek ve launch öncesi hızlı onboarding zemini kurmak.
+      </p>
+      <span class="tag">Oncelik: Yuksek</span>
+      <span class="tag">Hedef: Waitlist Buyutme</span>
+      <span class="tag">Firsat: 600+ yorum ilgisi</span>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>1. Landing Icerigi</h2>
+        <ul>
+          <li>[ ] Ne yaptigimizi net anlatan kisa deger onerisi yaz.</li>
+          <li>[ ] Hedef kitleleri ayir: kuruluslar, isletmeler, son kullanicilar.</li>
+          <li>[ ] Isbirligi cagrisi bolumu ekle: "Katki vermek isteyenler bize ulassin".</li>
+          <li>[ ] Sosyal kanit metni ekle: yuksek yorum/izlenme ilgisini vurgula.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>2. Waitlist Tasarimi</h2>
+        <ul>
+          <li>[ ] Form alanlari: ad-soyad, email, ulke/sehir, profil tipi, katkı tipi.</li>
+          <li>[ ] Profil tipi secenekleri: "Kurulus", "Isletme", "Son Kullanici", "Gelistirici".</li>
+          <li>[ ] Oncelikli katilim odulu: ilk 100/500 kisiye abonelik indirimi kurgusu.</li>
+          <li>[ ] Basvuru sonrasi tesekkur + referans daveti mesaji hazirla.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>3. Trafik ve Operasyon</h2>
+        <ul>
+          <li>[ ] Domain uzerinde landing sayfasini canliya al.</li>
+          <li>[ ] Gelen basvurulari tek listede topla (CSV/Sheet/DB).</li>
+          <li>[ ] Her gun en az 1 kez yeni basvuru kontrol rutini olustur.</li>
+          <li>[ ] Yuksek trafik senaryosu icin form hata/limit planini hazirla.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>4. Hemen Baslanacaklar (72 Saat)</h2>
+        <ul>
+          <li class="done">[x] Fikir kaynagi metni toplandi (<code>landing.txt</code>).</li>
+          <li>[ ] Landing ana metinlerinin ilk taslagini yaz.</li>
+          <li>[ ] Waitlist formunu ekle ve test et.</li>
+          <li>[ ] Isbirligi basvuru alanini ayri checkbox/alan olarak ac.</li>
+          <li>[ ] "Ilk katilanlara indirim" kosullarini netlestir ve yayinla.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="footer">
+      Not: Bu TODO dokumani, launch'i one cekme ve topluluk ilgisini somut basvuruya donusturme hedefiyle hazirlandi.
+    </p>
+  </main>
+</body>
+</html>
