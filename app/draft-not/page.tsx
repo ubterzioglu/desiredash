@@ -3,21 +3,21 @@
 import { useEffect, useRef, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
-type KimsinSen = 'BA' | 'UBT'
+type Classification = 'BK' | 'SY' | 'UBT'
 
 interface Not {
   id: string
   icerik: string
-  kimsin_sen: KimsinSen
+  classification: Classification
   created_at: string
 }
 
-const SECENEKLER: KimsinSen[] = ['BA', 'UBT']
+const SECENEKLER: Classification[] = ['BK', 'SY', 'UBT']
 
 export default function DraftNotPage() {
   const [notlar, setNotlar] = useState<Not[]>([])
   const [metin, setMetin] = useState('')
-  const [kimsinSen, setKimsinSen] = useState<KimsinSen>('BA')
+  const [classification, setClassification] = useState<Classification>('BK')
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [deleting, setDeleting] = useState<string | null>(null)
@@ -49,7 +49,7 @@ export default function DraftNotPage() {
 
     const { data } = await supabase
       .from('draft_notlar')
-      .insert([{ icerik: temiz, kimsin_sen: kimsinSen }])
+      .insert([{ icerik: temiz, classification: classification }])
       .select()
       .single()
 
@@ -58,7 +58,7 @@ export default function DraftNotPage() {
     }
 
     setMetin('')
-    setKimsinSen('BA')
+    setClassification('BK')
     setSaving(false)
     textareaRef.current?.focus()
   }
@@ -148,34 +148,34 @@ export default function DraftNotPage() {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-              <span style={{ fontSize: 12, color: '#8f90a6', fontWeight: 600 }}>Kimsin Sen?</span>
-              {SECENEKLER.map((secenek) => {
-                const aktif = kimsinSen === secenek
+               <span style={{ fontSize: 12, color: '#8f90a6', fontWeight: 600 }}>Kategori</span>
+               {SECENEKLER.map((secenek) => {
+                 const aktif = classification === secenek
 
-                return (
-                  <label
-                    key={secenek}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 8,
-                      cursor: 'pointer',
-                      color: aktif ? '#fff' : '#9ea0b8',
-                      fontSize: 13,
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      name="kimsin-sen"
-                      value={secenek}
-                      checked={aktif}
-                      onChange={() => setKimsinSen(secenek)}
-                      style={{ accentColor: '#7c6dfa' }}
-                    />
-                    {secenek}
-                  </label>
-                )
-              })}
+                 return (
+                   <label
+                     key={secenek}
+                     style={{
+                       display: 'inline-flex',
+                       alignItems: 'center',
+                       gap: 8,
+                       cursor: 'pointer',
+                       color: aktif ? '#fff' : '#9ea0b8',
+                       fontSize: 13,
+                     }}
+                   >
+                     <input
+                       type="radio"
+                       name="classification"
+                       value={secenek}
+                       checked={aktif}
+                       onChange={() => setClassification(secenek)}
+                       style={{ accentColor: '#7c6dfa' }}
+                     />
+                     {secenek}
+                   </label>
+                 )
+               })}
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
@@ -236,23 +236,23 @@ export default function DraftNotPage() {
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 10 }}>
-                  <span
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      minHeight: 28,
-                      padding: '0 10px',
-                      borderRadius: 999,
-                      background: '#232334',
-                      color: '#c8c9de',
-                      fontSize: 12,
-                      fontWeight: 700,
-                      letterSpacing: 0.4,
-                    }}
-                  >
-                    {not.kimsin_sen}
-                  </span>
-                </div>
+                   <span
+                     style={{
+                       display: 'inline-flex',
+                       alignItems: 'center',
+                       minHeight: 28,
+                       padding: '0 10px',
+                       borderRadius: 999,
+                       background: '#232334',
+                       color: '#c8c9de',
+                       fontSize: 12,
+                       fontWeight: 700,
+                       letterSpacing: 0.4,
+                     }}
+                   >
+                     {not.classification}
+                   </span>
+                 </div>
                 <div
                   style={{
                     fontSize: 13,

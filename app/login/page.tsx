@@ -47,7 +47,7 @@ export default function LoginPage() {
       }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <h1 style={{ fontSize: 26, fontWeight: 700, color: '#e8e8f0', letterSpacing: '-0.5px' }}>
-            Corte<span style={{ color: '#7c6dfa' }}>QS</span>
+            Desire<span style={{ color: '#7c6dfa' }}>map</span>
           </h1>
           <p style={{ color: '#666', fontSize: 13, marginTop: 6 }}>Devam etmek için şifrenizi girin</p>
         </div>

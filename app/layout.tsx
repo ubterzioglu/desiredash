@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'CorteQS',
-  description: 'CorteQS Dashboard & Project Status',
+  title: 'Desiremap',
+  description: 'Desiremap Dashboard & Project Status',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

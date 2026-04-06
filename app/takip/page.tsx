@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
 type Durum = 'Başlanmadı' | 'Devam Ediyor' | 'Bitti' | 'Bekliyor'
-type Atanan = 'Burak' | 'UBT' | ''
+type Atanan = 'Sahin' | 'Baran' | 'UBT' | ''
 
 interface Gorev {
   id: string
@@ -180,7 +180,8 @@ export default function TakipPage() {
                             style={{ background: '#1e1e28', color: '#ccc', border: '1px solid #2a2a38', borderRadius: 6, padding: '4px 8px', fontSize: 12, cursor: 'pointer', outline: 'none' }}
                           >
                             <option value="">—</option>
-                            <option value="Burak">Burak</option>
+                            <option value="Sahin">Sahin</option>
+                            <option value="Baran">Baran</option>
                             <option value="UBT">UBT</option>
                           </select>
                         ) : (
