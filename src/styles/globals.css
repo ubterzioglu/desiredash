@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --docs-header-height: 4rem;
+    --docs-sidebar-width: 17.5rem;
+    --docs-content-max-width: 72rem;
+    --docs-content-gutter: clamp(1rem, 1.5vw + 0.75rem, 2rem);
+    --docs-content-block-padding: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .docs-shell {
+    @apply min-h-screen bg-gray-50;
+    padding-top: var(--docs-header-height);
+  }
+
+  .docs-shell-main {
+    min-height: calc(100vh - var(--docs-header-height));
+  }
+
+  .docs-shell-content {
+    @apply mx-auto w-full;
+    max-width: var(--docs-content-max-width);
+    padding-inline: var(--docs-content-gutter);
+    padding-block: var(--docs-content-block-padding);
+  }
+
+  .docs-main-column {
+    @apply min-h-full;
+  }
+
+  .sidebar-item {
+    @apply flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+
+  .sidebar-item.active {
+    @apply bg-primary-50 font-semibold text-primary-700 ring-1 ring-inset ring-primary-100;
+  }
+
+  .sidebar-category {
+    @apply text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 py-2;
+  }
+
+  .content-card {
+    @apply rounded-lg border border-gray-200 bg-white p-6 transition-shadow hover:shadow-md;
+  }
+}
+
+@media (min-width: 1024px) {
+  @layer components {
+    .docs-shell-main {
+      padding-left: var(--docs-sidebar-width);
+    }
+  }
+}
