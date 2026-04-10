@@ -16,13 +16,32 @@
   }
 
   body {
-    @apply bg-gray-50 text-gray-900 antialiased;
+    @apply bg-canvas-base text-ink-primary antialiased;
+  }
+
+  /* XP-style dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-canvas-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(26, 109, 194, 0.45);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-xp-blue-light;
   }
 }
 
 @layer components {
   .docs-shell {
-    @apply min-h-screen bg-gray-50;
+    @apply min-h-screen bg-canvas-base;
     padding-top: var(--docs-header-height);
   }
 
@@ -42,19 +61,29 @@
   }
 
   .sidebar-item {
-    @apply flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+    @apply flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium
+           text-ink-muted transition-colors
+           hover:bg-canvas-elevated hover:text-ink-primary
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface;
   }
 
   .sidebar-item.active {
-    @apply bg-primary-50 font-semibold text-primary-700 ring-1 ring-inset ring-primary-100;
+    @apply font-semibold text-xp-blue-light;
+    background-color: rgba(26, 109, 194, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(61, 139, 219, 0.25);
   }
 
   .sidebar-category {
-    @apply text-xs font-semibold text-gray-400 uppercase tracking-wider px-3 py-2;
+    @apply text-xs font-semibold text-ink-muted uppercase tracking-wider px-3 py-2 opacity-60;
   }
 
   .content-card {
-    @apply rounded-lg border border-gray-200 bg-white p-6 transition-shadow hover:shadow-md;
+    @apply rounded-lg border border-canvas-border bg-canvas-surface p-6 transition-all;
+  }
+
+  .content-card:hover {
+    border-color: #1A6DC2;
+    box-shadow: 0 0 0 1px rgba(26, 109, 194, 0.25), 0 4px 20px rgba(10, 22, 40, 0.6);
   }
 }
 

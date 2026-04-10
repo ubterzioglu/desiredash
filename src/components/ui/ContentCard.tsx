@@ -46,7 +46,7 @@ export default function ContentCard({
     'content-card group',
     density === 'detail' ? 'rounded-2xl' : '',
     isCardInteractive
-      ? 'block cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2'
+      ? 'block cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base'
       : 'block',
     density === 'compact' ? 'p-5' : '',
   ]
@@ -55,16 +55,16 @@ export default function ContentCard({
 
   const titleClasses =
     density === 'detail'
-      ? 'text-xl font-semibold text-gray-900'
-      : 'text-base font-semibold text-gray-900 transition-colors group-hover:text-primary-600 group-focus-visible:text-primary-600'
+      ? 'text-xl font-semibold text-ink-primary'
+      : 'text-base font-semibold text-ink-primary transition-colors group-hover:text-xp-blue-light group-focus-visible:text-xp-blue-light'
 
   const descriptionClasses =
     density === 'detail'
-      ? 'text-sm leading-6 text-gray-600'
-      : 'text-sm text-gray-500'
+      ? 'text-sm leading-6 text-ink-muted'
+      : 'text-sm text-ink-muted'
 
   const actionMarkup = action ? (
-    <span className="inline-flex items-center gap-2 text-sm font-medium text-primary-600 transition-colors hover:text-primary-700">
+    <span className="inline-flex items-center gap-2 text-sm font-medium text-xp-blue-light transition-colors hover:text-xp-blue">
       {action.label}
       <ArrowRight size={16} aria-hidden="true" />
     </span>
@@ -79,7 +79,7 @@ export default function ContentCard({
       return (
         <Link
           href={action.href}
-          className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-primary-600 transition-colors hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+          className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-xp-blue-light transition-colors hover:text-xp-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
         >
           {actionMarkup}
         </Link>
@@ -90,7 +90,7 @@ export default function ContentCard({
       <button
         type="button"
         onClick={action.onClick}
-        className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-primary-600 transition-colors hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+        className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-xp-blue-light transition-colors hover:text-xp-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
       >
         {actionMarkup}
       </button>
@@ -107,7 +107,7 @@ export default function ContentCard({
       <div className="flex items-start gap-4">
         {icon && density !== 'detail' && (
           <div
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-50 text-primary-600 transition-colors group-hover:bg-primary-100"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-xp-blue/10 text-xp-blue-light transition-colors group-hover:bg-xp-blue/20"
             aria-hidden="true"
           >
             {icon}
@@ -118,12 +118,12 @@ export default function ContentCard({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2">
                 {eyebrow && (
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-400">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted">
                     {eyebrow}
                   </p>
                 )}
                 {badge && (
-                  <span className="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-500">
+                  <span className="rounded-full bg-canvas-elevated border border-canvas-border px-2.5 py-1 text-xs font-medium text-ink-muted">
                     {badge}
                   </span>
                 )}
@@ -139,7 +139,7 @@ export default function ContentCard({
               {description}
             </p>
             {detail && (
-              <p className="whitespace-pre-line text-sm leading-6 text-gray-500">
+              <p className="whitespace-pre-line text-sm leading-6 text-ink-muted">
                 {detail}
               </p>
             )}

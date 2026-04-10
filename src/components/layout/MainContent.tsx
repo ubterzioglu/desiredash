@@ -27,34 +27,34 @@ export default function MainContent({ categorySlug }: MainContentProps) {
         {contentView.backLink && (
           <Link
             href={contentView.backLink.href}
-            className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-ink-muted transition-colors hover:text-ink-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base"
           >
             <ArrowLeft size={16} aria-hidden="true" />
             {contentView.backLink.label}
           </Link>
         )}
 
-        <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-canvas-border bg-canvas-elevated p-6 shadow-sm" style={{ boxShadow: '0 2px 16px rgba(10,22,40,0.7), inset 0 1px 0 rgba(61,139,219,0.08)' }}>
           {contentView.eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-xp-blue-light">
               {contentView.eyebrow}
             </p>
           )}
-          <h1 className="mt-3 text-3xl font-bold text-gray-900">
+          <h1 className="mt-3 text-3xl font-bold text-ink-primary">
             {contentView.title}
           </h1>
-          <p className="mt-3 max-w-3xl text-base text-gray-600">
+          <p className="mt-3 max-w-3xl text-base text-ink-muted">
             {contentView.description}
           </p>
           {contentView.supportingText && (
-            <p className="mt-3 max-w-3xl text-sm text-gray-500">
+            <p className="mt-3 max-w-3xl text-sm text-ink-muted opacity-70">
               {contentView.supportingText}
             </p>
           )}
           {contentView.metaBadges && contentView.metaBadges.length > 0 && (
-            <div className="mt-6 flex flex-wrap gap-3 text-sm text-gray-500">
+            <div className="mt-6 flex flex-wrap gap-3 text-sm text-ink-muted">
               {contentView.metaBadges.map((metaBadge) => (
-                <span key={metaBadge} className="rounded-full bg-gray-100 px-3 py-1">
+                <span key={metaBadge} className="rounded-full bg-canvas-surface border border-canvas-border px-3 py-1">
                   {metaBadge}
                 </span>
               ))}
@@ -62,15 +62,15 @@ export default function MainContent({ categorySlug }: MainContentProps) {
           )}
 
           {contentView.search && (
-            <div className="mt-8 border-t border-gray-200 pt-6">
+            <div className="mt-8 border-t border-canvas-border pt-6">
               <div className="mb-2 flex items-center justify-between gap-3">
                 <label
                   htmlFor={searchInputId}
-                  className="text-sm font-medium text-gray-700"
+                  className="text-sm font-medium text-ink-muted"
                 >
                   {contentView.search.label}
                 </label>
-                <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-700">
+                <span className="rounded-full bg-xp-yellow/10 border border-xp-yellow/30 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-xp-yellow">
                   Placeholder UI
                 </span>
               </div>
@@ -84,15 +84,15 @@ export default function MainContent({ categorySlug }: MainContentProps) {
                   autoComplete="off"
                   aria-readonly="true"
                   aria-describedby={searchHelperId}
-                  className="w-full rounded-lg border border-gray-200 bg-gray-50 py-3 pl-11 pr-4 text-sm text-gray-500 focus-visible:border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+                  className="w-full rounded-lg border border-canvas-border bg-canvas-surface py-3 pl-11 pr-4 text-sm text-ink-muted placeholder:text-ink-muted/50 focus-visible:border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue"
                 />
                 <Search
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-ink-muted opacity-40"
                   size={18}
                   aria-hidden="true"
                 />
               </div>
-              <p id={searchHelperId} className="mt-2 text-sm text-gray-400">
+              <p id={searchHelperId} className="mt-2 text-sm text-ink-muted opacity-50">
                 {contentView.search.helperText}
               </p>
             </div>
@@ -143,8 +143,8 @@ export default function MainContent({ categorySlug }: MainContentProps) {
               })}
             </div>
           ) : (
-            <div className="rounded-2xl border border-dashed border-gray-300 bg-white p-6 text-sm text-gray-500">
-              <h3 className="text-base font-semibold text-gray-900">
+            <div className="rounded-2xl border border-dashed border-canvas-border bg-canvas-surface p-6 text-sm text-ink-muted">
+              <h3 className="text-base font-semibold text-ink-primary">
                 {section.emptyState?.title ?? 'No content available'}
               </h3>
               <p className="mt-2 max-w-2xl">
@@ -154,7 +154,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
               {section.emptyState?.action?.type === 'link' && (
                 <Link
                   href={section.emptyState.action.href}
-                  className="mt-4 inline-flex items-center gap-2 rounded-md text-sm font-medium text-primary-600 transition-colors hover:text-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+                  className="mt-4 inline-flex items-center gap-2 rounded-md text-sm font-medium text-xp-blue-light transition-colors hover:text-xp-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
                 >
                   {section.emptyState.action.label}
                 </Link>

@@ -37,7 +37,7 @@ export default function SidebarItem({
       <span>{label}</span>
       <ChevronRight
         size={16}
-        className="ml-auto opacity-50 transition-opacity group-hover:opacity-80"
+        className="ml-auto text-ink-muted opacity-40 transition-opacity group-hover:opacity-70"
         aria-hidden="true"
       />
     </Link>

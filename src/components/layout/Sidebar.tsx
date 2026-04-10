@@ -42,14 +42,14 @@ export default function Sidebar({
       {!isDesktopViewport && isOpen && (
         <button
           type="button"
-          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
+          className="fixed inset-0 z-40 bg-canvas-base/70 lg:hidden"
           onClick={onClose}
           aria-label="Close documentation navigation"
         />
       )}
       <aside
         id="docs-sidebar"
-        className={`fixed left-0 top-[var(--docs-header-height)] z-40 h-[calc(100vh-var(--docs-header-height))] w-[var(--docs-sidebar-width)] border-r border-gray-200 bg-white transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed left-0 top-[var(--docs-header-height)] z-40 h-[calc(100vh-var(--docs-header-height))] w-[var(--docs-sidebar-width)] border-r border-canvas-border bg-canvas-surface transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           isSidebarVisible
             ? 'visible translate-x-0'
             : 'invisible -translate-x-full lg:visible lg:translate-x-0'

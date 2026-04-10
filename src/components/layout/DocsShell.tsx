@@ -87,7 +87,7 @@ export default function DocsShell({ children }: DocsShellProps) {
     <div className="docs-shell">
       <a
         href="#docs-main-content"
-        className="sr-only fixed left-4 top-4 z-[60] rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-900 shadow-lg focus:not-sr-only focus:outline-none focus:ring-2 focus:ring-primary-500"
+        className="sr-only fixed left-4 top-4 z-[60] rounded-md bg-canvas-elevated px-4 py-2 text-sm font-medium text-ink-primary shadow-lg ring-1 ring-canvas-border focus:not-sr-only focus:outline-none focus:ring-2 focus:ring-xp-blue"
       >
         Skip to main content
       </a>

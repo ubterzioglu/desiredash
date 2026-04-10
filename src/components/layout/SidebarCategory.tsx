@@ -39,10 +39,10 @@ export default function SidebarCategory({
       <div className="py-2">
         <Link
           href={buildDocCategoryHref(slug)}
-          className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+          className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface ${
             active
-              ? 'bg-primary-50 text-primary-700'
-              : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'
+              ? 'text-xp-blue-light bg-xp-blue/10'
+              : 'text-ink-muted hover:bg-canvas-elevated hover:text-ink-primary'
           }`}
           aria-current={active ? 'page' : undefined}
         >
@@ -66,10 +66,10 @@ export default function SidebarCategory({
         onClick={onToggle}
         aria-expanded={isExpanded}
         aria-controls={panelId}
-        className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+        className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface ${
           active
-            ? 'bg-primary-50 text-primary-700'
-            : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'
+            ? 'text-xp-blue-light bg-xp-blue/10'
+            : 'text-ink-muted hover:bg-canvas-elevated hover:text-ink-primary'
         }`}
       >
         {icon && (
