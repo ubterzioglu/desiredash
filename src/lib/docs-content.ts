@@ -267,6 +267,17 @@ Burada ileride:
 - Sayfa durumu
 - Kullanici deneyimi eksikleri
 - Frontend teslim listesi izlenecek.`,
+  'neden-var-amac': `Bu pano su 5 temel ihtiyac icin olusturuldu:
+
+1. **Bilgi daginiklarini toplamak** — WhatsApp notlari, PDF tahtalari ve sesli fikirler tek bir yapili yerde biriksin; kaybolmasin.
+
+2. **Oturum bellegini korumak** — Her yeni AI veya ekip oturumu oncesinde "nerededik?" sorusuna saniyeler icinde cevap verebilmek icin bu pano referans noktasi gorevi goruyor.
+
+3. **Karar gecmisini izlenebilir kilmak** — Neden su ozelligi sectik, neden bunu erteleledik, hangi riski gorduk ve nasil cevap verdik; bu kayitlar MVP'den uretime geciste kritik.
+
+4. **Paydas hizalamasini hizlandirmak** — Baran Kaplan, Sahin veya disaridan dahil olan herhangi biri bu panoyu acip 10 dakikada projenin durumunu okuyabilmeli.
+
+5. **Planlama ritmine zemin hazirlamak** — TODO, Milestones ve Proje Takip alanlari bos baslamasin diye; bu pano sprint planlamasinda acilis belgesi olarak kullanilacak.`,
 }
 
 export type ContentViewMode = 'hub-overview' | 'category-detail'

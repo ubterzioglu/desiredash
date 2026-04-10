@@ -7,6 +7,7 @@ export type DocCategorySlug =
   | 'contacts'
   | 'links'
   | 'proje-status'
+  | 'neden-var'
 
 export type DocIconKey =
   | 'book'
@@ -327,6 +328,27 @@ export const docsCategories: DocCategoryDefinition[] = [
         description: 'Blank Board notlari ve ilerde eklenecek referans linkleri icin alan.',
         href: '#links-kaynaklar',
         categorySlug: 'links',
+      },
+    ],
+  },
+  {
+    slug: 'neden-var',
+    label: 'BU SAYFA NEDEN VAR?',
+    shortDescription: 'Bu dokumantasyon panosunun varlik sebebi ve amaci.',
+    iconKey: 'home',
+    defaultExpanded: false,
+    overview: {
+      title: 'Bu Sayfa Neden Var?',
+      description: 'DesireMap proje panosunun neden olusturuldugunu, nasil kullanilacagini ve ne ise yaradigini aciklayan giris bolumu.',
+      ctaLabel: 'Amaci oku',
+    },
+    items: [
+      {
+        id: 'neden-var-amac',
+        label: 'Amac ve Varlik Sebebi',
+        description: 'Bu panonun neden olusturuldugu ve hangi sorulara cevap verdigi.',
+        href: '#neden-var-amac',
+        categorySlug: 'neden-var',
       },
     ],
   },
