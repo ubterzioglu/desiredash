@@ -56,7 +56,7 @@ export default function ContentCard({
   const titleClasses =
     density === 'detail'
       ? 'text-xl font-semibold text-ink-primary'
-      : 'text-base font-semibold text-ink-primary transition-colors group-hover:text-xp-blue-light group-focus-visible:text-xp-blue-light'
+      : 'text-base font-semibold text-ink-primary transition-colors group-hover:text-xp-green group-focus-visible:text-xp-green'
 
   const descriptionClasses =
     density === 'detail'
@@ -64,7 +64,7 @@ export default function ContentCard({
       : 'text-sm text-ink-muted'
 
   const actionMarkup = action ? (
-    <span className="inline-flex items-center gap-2 text-sm font-medium text-xp-blue-light transition-colors hover:text-xp-blue">
+    <span className="inline-flex items-center gap-2 text-sm font-medium transition-colors" style={{ color: '#F5A500' }}>
       {action.label}
       <ArrowRight size={16} aria-hidden="true" />
     </span>
@@ -107,7 +107,8 @@ export default function ContentCard({
       <div className="flex items-start gap-4">
         {icon && density !== 'detail' && (
           <div
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-xp-blue/10 text-xp-blue-light transition-colors group-hover:bg-xp-blue/20"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors"
+            style={{ background: 'rgba(76,175,80,0.12)', color: '#4CAF50' }}
             aria-hidden="true"
           >
             {icon}

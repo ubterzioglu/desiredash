@@ -27,7 +27,8 @@ export default function MainContent({ categorySlug }: MainContentProps) {
         {contentView.backLink && (
           <Link
             href={contentView.backLink.href}
-            className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-ink-muted transition-colors hover:text-ink-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base"
+            className="inline-flex items-center gap-2 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base"
+            style={{ color: '#CC3300' }}
           >
             <ArrowLeft size={16} aria-hidden="true" />
             {contentView.backLink.label}
@@ -36,7 +37,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
 
         <div className="rounded-2xl border border-canvas-border bg-canvas-elevated p-6 shadow-sm" style={{ boxShadow: '0 2px 16px rgba(10,22,40,0.7), inset 0 1px 0 rgba(61,139,219,0.08)' }}>
           {contentView.eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-xp-blue-light">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: '#F5A500' }}>
               {contentView.eyebrow}
             </p>
           )}
@@ -154,7 +155,8 @@ export default function MainContent({ categorySlug }: MainContentProps) {
               {section.emptyState?.action?.type === 'link' && (
                 <Link
                   href={section.emptyState.action.href}
-                  className="mt-4 inline-flex items-center gap-2 rounded-md text-sm font-medium text-xp-blue-light transition-colors hover:text-xp-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
+                  className="mt-4 inline-flex items-center gap-2 rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
+                  style={{ color: '#4CAF50' }}
                 >
                   {section.emptyState.action.label}
                 </Link>

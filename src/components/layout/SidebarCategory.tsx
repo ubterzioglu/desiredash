@@ -41,9 +41,10 @@ export default function SidebarCategory({
           href={buildDocCategoryHref(slug)}
           className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface ${
             active
-              ? 'text-xp-blue-light bg-xp-blue/10'
+              ? 'text-xp-green'
               : 'text-ink-muted hover:bg-canvas-elevated hover:text-ink-primary'
           }`}
+          style={active ? { background: 'rgba(76,175,80,0.12)', boxShadow: 'inset 2px 0 0 #4CAF50' } : undefined}
           aria-current={active ? 'page' : undefined}
         >
           {icon && (
@@ -68,9 +69,10 @@ export default function SidebarCategory({
         aria-controls={panelId}
         className={`flex w-full items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface ${
           active
-            ? 'text-xp-blue-light bg-xp-blue/10'
+            ? 'text-xp-green'
             : 'text-ink-muted hover:bg-canvas-elevated hover:text-ink-primary'
         }`}
+        style={active ? { background: 'rgba(76,175,80,0.12)', boxShadow: 'inset 2px 0 0 #4CAF50' } : undefined}
       >
         {icon && (
           <span className="h-4 w-4" aria-hidden="true">
