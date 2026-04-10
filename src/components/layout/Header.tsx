@@ -14,7 +14,7 @@ export default function Header({
   menuButtonRef,
 }: HeaderProps) {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 h-[var(--docs-header-height)] border-b border-canvas-border bg-canvas-elevated/95 backdrop-blur" style={{ boxShadow: '0 1px 0 0 #1E3A5F' }}>
+    <header className="fixed inset-x-0 top-0 z-50 h-[var(--docs-header-height)] border-b border-canvas-border bg-canvas-elevated/95 backdrop-blur-sm" style={{ boxShadow: '0 1px 0 0 #1F1F1F' }}>
       {/* Windows XP 4-colour flag stripe */}
       <div className="absolute inset-x-0 top-0 h-[3px] flex">
         <div className="flex-1" style={{ background: '#CC3300' }} />

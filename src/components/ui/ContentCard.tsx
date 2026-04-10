@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ReactNode } from 'react'
+import type React from 'react'
 import { ArrowRight } from 'lucide-react'
 
 type ContentCardAction =
@@ -16,6 +17,8 @@ type ContentCardAction =
       surface?: 'card' | 'cta'
     }
 
+const XP_COLORS = ['#CC3300', '#4CAF50', '#1A6DC2', '#F5A500'] as const
+
 interface ContentCardProps {
   title: string
   description: string
@@ -26,6 +29,7 @@ interface ContentCardProps {
   anchorId?: string
   density?: 'default' | 'compact' | 'detail'
   action?: ContentCardAction
+  xpColorIndex?: number
 }
 
 export default function ContentCard({
@@ -38,15 +42,17 @@ export default function ContentCard({
   anchorId,
   density = 'default',
   action,
+  xpColorIndex = 0,
 }: ContentCardProps) {
   const actionSurface = action?.surface ?? 'card'
   const isCardInteractive = Boolean(action) && actionSurface === 'card'
+  const xpColor = XP_COLORS[xpColorIndex % XP_COLORS.length]
 
   const cardClasses = [
     'content-card group',
     density === 'detail' ? 'rounded-2xl' : '',
     isCardInteractive
-      ? 'block cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base'
+      ? 'block cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base'
       : 'block',
     density === 'compact' ? 'p-5' : '',
   ]
@@ -55,8 +61,8 @@ export default function ContentCard({
 
   const titleClasses =
     density === 'detail'
-      ? 'text-xl font-semibold text-ink-primary'
-      : 'text-base font-semibold text-ink-primary transition-colors group-hover:text-xp-green group-focus-visible:text-xp-green'
+      ? 'text-xl font-semibold text-white'
+      : 'text-base font-semibold text-white transition-colors'
 
   const descriptionClasses =
     density === 'detail'
@@ -64,7 +70,7 @@ export default function ContentCard({
       : 'text-sm text-ink-muted'
 
   const actionMarkup = action ? (
-    <span className="inline-flex items-center gap-2 text-sm font-medium transition-colors" style={{ color: '#F5A500' }}>
+    <span className="inline-flex items-center gap-2 text-sm font-medium transition-colors" style={{ color: xpColor }}>
       {action.label}
       <ArrowRight size={16} aria-hidden="true" />
     </span>
@@ -79,7 +85,8 @@ export default function ContentCard({
       return (
         <Link
           href={action.href}
-          className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-xp-blue-light transition-colors hover:text-xp-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
+          className="inline-flex items-center gap-2 rounded-md text-sm font-medium transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
+          style={{ color: xpColor }}
         >
           {actionMarkup}
         </Link>
@@ -90,16 +97,25 @@ export default function ContentCard({
       <button
         type="button"
         onClick={action.onClick}
-        className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-xp-blue-light transition-colors hover:text-xp-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
+        className="inline-flex items-center gap-2 rounded-md text-sm font-medium transition-opacity hover:opacity-75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-surface"
+        style={{ color: xpColor }}
       >
         {actionMarkup}
       </button>
     )
   }
 
+  const cardStyle: React.CSSProperties = {
+    borderLeft: `3px solid ${xpColor}`,
+    background: '#0D0D0D',
+    borderRadius: density === 'detail' ? '1rem' : '0.75rem',
+    padding: density === 'compact' ? undefined : '1.25rem 1.5rem',
+  }
+
   const content = (
     <div
       id={anchorId}
+      style={cardStyle}
       className={`${
         anchorId ? 'scroll-mt-28' : ''
       } ${density === 'detail' ? 'space-y-4' : 'space-y-3'}`.trim()}
@@ -108,7 +124,7 @@ export default function ContentCard({
         {icon && density !== 'detail' && (
           <div
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors"
-            style={{ background: 'rgba(76,175,80,0.12)', color: '#4CAF50' }}
+            style={{ background: `${xpColor}18`, color: xpColor }}
             aria-hidden="true"
           >
             {icon}
@@ -119,12 +135,12 @@ export default function ContentCard({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex flex-wrap items-center gap-2">
                 {eyebrow && (
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: xpColor }}>
                     {eyebrow}
                   </p>
                 )}
                 {badge && (
-                  <span className="rounded-full bg-canvas-elevated border border-canvas-border px-2.5 py-1 text-xs font-medium text-ink-muted">
+                  <span className="rounded-full px-2.5 py-1 text-xs font-medium" style={{ background: `${xpColor}15`, color: xpColor, border: `1px solid ${xpColor}40` }}>
                     {badge}
                   </span>
                 )}

@@ -29,17 +29,17 @@ module.exports = {
           red: '#CC3300',
           yellow: '#F5A500',
         },
-        // Dark canvas surfaces
+        // Pure black canvas surfaces
         canvas: {
-          base: '#0A1628',
-          surface: '#0F1F38',
-          elevated: '#162844',
-          border: '#1E3A5F',
+          base: '#000000',
+          surface: '#0A0A0A',
+          elevated: '#111111',
+          border: '#1F1F1F',
         },
-        // Dark text
+        // White text
         ink: {
-          primary: '#D6E8FF',
-          muted: '#7BA8D4',
+          primary: '#FFFFFF',
+          muted: '#888888',
         },
       },
     },

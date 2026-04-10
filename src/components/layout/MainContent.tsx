@@ -35,7 +35,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
           </Link>
         )}
 
-        <div className="rounded-2xl border border-canvas-border bg-canvas-elevated p-6 shadow-sm" style={{ boxShadow: '0 2px 16px rgba(10,22,40,0.7), inset 0 1px 0 rgba(61,139,219,0.08)' }}>
+        <div className="rounded-2xl border border-canvas-border bg-canvas-elevated p-6 shadow-sm" style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.8)', borderColor: '#1F1F1F' }}>
           {contentView.eyebrow && (
             <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: '#F5A500' }}>
               {contentView.eyebrow}
@@ -115,7 +115,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
 
           {section.cards.length > 0 ? (
             <div className={getGridClasses(section)}>
-              {section.cards.map((card) => {
+              {section.cards.map((card, cardIndex) => {
                 const Icon = card.iconKey ? getDocIcon(card.iconKey) : null
 
                 return (
@@ -128,6 +128,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
                     eyebrow={card.eyebrow}
                     density={card.density}
                     anchorId={card.anchorId}
+                    xpColorIndex={cardIndex}
                     icon={Icon ? <Icon size={20} /> : undefined}
                     action={
                       card.action?.type === 'link'
