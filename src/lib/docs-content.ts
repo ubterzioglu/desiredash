@@ -152,48 +152,107 @@ Bu sayfa sonraki sprintlerde onceliklendirme listesine donusturulmeli.`,
 - Conversion odakli landing page copy
 
 Bu alan, MVP sonrasinda karar verilen ciktilarin uretim backlog'una donusecek.`,
-  'todo-overview': `Tum eski icerikler temizlendi. Bu alan yeni todo yapisi icin bos bir calisma yuzeyi olarak ayrildi.
+  'todo-teknik-yapilacaklar': `Teknik yapilacaklar:
+- DB Design
+- Security / Backend Mimarisi
 
-Ileride burada:
-- Yapilacaklar
-- Sorumlular
-- Oncelik seviyesi
-- Blokaj notlari tutulabilir.`,
-  'brainstorming-overview': `Bu alan ham fikirler, acik sorular ve test edilmeyi bekleyen konseptler icin ayrildi.
+Bu blok Blank Board notlarindaki dogrudan todo kalemlerini korur.`,
+  'todo-egitim': `Egitim:
+- JS / TS kurslarini bitir
 
-Ileride burada:
-- Yeni ozellik hipotezleri
-- Pazarlama fikirleri
-- Operasyonel deneyler
-- Riskli ama degerli denemeler tutulabilir.`,
-  'milestones-overview': `Bu alan kilometre taslari icin sifirdan ayrildi.
+Bu not bireysel hazirlik ve delivery kapasitesi icin ayri tutuldu.`,
+  'todo-operasyonel-basliklar': `Yonetim alanlari ve tekrar eden ana sistem bilesenleri:
+- Rezervasyon
+- Admin paneli
+- Nested UI (isletmelerden veri cekme)
+- Yasal surecler
 
-Ileride burada:
-- Faz bazli teslim tarihleri
-- MVP cikis hedefleri
-- Kritik karar kapilari
-- Basari olcum noktalari yer alacak.`,
-  'proje-takip-overview': `Bu bolum genel proje ritmini izlemek icin ayrildi.
+Ayni dörtlü not tahtasinda tekrar tekrar geciyor; bu nedenle backbone olarak ele alinmali.`,
+  'brainstorming-genel-notlar': `Genel notlar:
+- +18 schemalardan safe search false getirilmesi
+- Arayuz yapisi tartisilacak (sehirlere / eyalete gore arka plan)
+- Filtreleme zenginlestirmesi (butce bazli vb.)
+- FAQ (ilerisi icin) + chatbot
+- Login olmadan / olarak:
+  rollback
+  transaction
+  logging
+- Banner konusu
+- Nested UI:
+  isletmelerden arka plan ve diger bilgilerin alinmasi
+  harita eklenmesi
+- UBT logo ureten (gerekirse parali) en iyi AI uygulamasi
+- Arrow (sehirdeki gibi) alternatif secenekler
+- UBT giris yazisi
+- Asagi kaydirmaya tesvik edecek arka plan fotografi
+- Standort kategori birlestirme
+- Premium vb. kaldirilmasi
+- Suche sonrasi akis
+- Geri donus / feedback mekanizmasi`,
+  'brainstorming-banner-ui': `UI / Banner yapisi:
+- Akan Banner
+- Sabit Banner 1
+- Sabit Banner 2
 
-Ileride burada:
-- Haftalik durum ozeti
-- Acik blokajlar
-- Sorumlular
-- Son guncellemeler tutulabilir.`,
-  'contacts-overview': `Contacts bolumu paydas, hukuk, teknik ve operasyon baglantilari icin temiz bir liste alanidir.
+Tekrarlayan yapi:
+- Akan Banner
+- Sabit Banner 1
+- Akan Banner
 
-Ileride burada:
-- Kisi adi
-- Rol
-- Kanal
-- Notlar yer alabilir.`,
-  'links-overview': `Links bolumu referans kaynaklari ve operasyonel erisim noktalarini toplamak icin ayrildi.
+Bu notlar banner kurgusunun UX ve monetization tarafinda aktif bir deneme alani oldugunu gosteriyor.`,
+  'brainstorming-screen-akisi': `Screen akisi:
+- Screen 1
+- Screen 2
+- Screen 3
+- Suche Screen
 
-Ileride burada:
-- Dashboard linkleri
-- Dokumanlar
-- Tool girisleri
-- Referans URL'ler tutulabilir.`,
+Mobil card-based akis mantigi sonraki wireframe'lere temel olabilir.`,
+  'brainstorming-kritik-noktalar': `One cikan kritik noktalar:
+- Nested UI + isletmeden veri cekme -> core feature
+- Rezervasyon + admin panel -> ana sistem backbone
+- Banner + UI akisi -> monetization / UX kritik
+- Suche sonrasi flow -> urunun kalbi
+- Login'siz kullanim + logging -> teknik risk / karar noktasi`,
+  'milestones-placeholder': `Blank Board notlarinda tarih ya da kesin milestone listesi bulunmuyor.
+
+Bu sayfa su an su is icin hazirlandi:
+- milestone cikarma
+- tarih atama
+- owner belirleme
+- faz kapilari tanimlama
+
+Yani alan acildi ama kaynakta milestone verisi olmadigi icin bilincli olarak bos tutuluyor.`,
+  'proje-takip-moduller': `Uygulama modulleri:
+- Rezervasyon
+- Admin paneli
+- Nested UI (isletmelerden veri cekme)
+- Yasal surecler
+
+Bu moduller hem yonetim alanlari hem de tekrar eden sistem bilesenleri olarak notlarda geciyor.`,
+  'proje-takip-diyagram': `Gorsel diyagramdan anlasilanlar:
+- Sol tarafta Site / Notlar bloklari
+- Orta alanda feature listeleri ve backend / surec notlari
+- Sag tarafta mobil UI ekran akisi ve kullanici akisi baglantilari
+- En sagda muhtemelen placeholder / future screen alani
+
+Bu yorumlar bilgi mimarisi ve ekranlar arasi gecis kurgusunu anlamak icin tutuldu.`,
+  'proje-takip-marka': `Urun / Marka:
+- Desiremap
+
+Bu not tek satirlik olsa da proje kimliginin merkezine yerlestirilmeli.`,
+  'contacts-kisiler': `Ilgili kisiler:
+- Baran Kaplan
+- Sahin
+- UBT`,
+  'links-kaynaklar': `Kaynak:
+- Blank Board PDF notlari
+
+Bu bolum ileride:
+- dokuman linkleri
+- figma / board linkleri
+- harici arac linkleri
+- operasyonel referanslar
+icin kullanilacak.`,
   'proje-status-backend': `Backend status alani ilk etapta bos tutuluyor.
 
 Burada ileride:
