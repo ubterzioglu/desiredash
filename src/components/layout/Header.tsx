@@ -45,14 +45,14 @@ export default function Header({
           </button>
           <Link
             href="/"
-            className="rounded-md text-xl font-semibold text-ink-primary transition-colors hover:text-xp-blue-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-elevated"
+            className="rounded-md text-sm font-semibold text-ink-primary transition-colors hover:text-xp-blue-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-elevated"
           >
-            DesireMap Workspace
+            desiremap.de
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-sm font-medium px-2.5 py-1 rounded" style={{ background: 'rgba(76,175,80,0.12)', border: '1px solid rgba(76,175,80,0.3)', color: '#4CAF50' }}>
-            project board
+          <span className="text-sm font-medium italic text-ink-muted">
+            DesireMap&apos;le zevkten dört köşe olun...
           </span>
         </div>
       </div>
