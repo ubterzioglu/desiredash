@@ -5,6 +5,7 @@ import ContactManager from '../contacts/ContactManager'
 import LogoFikirlerManager from '../logo-fikirler/LogoFikirlerManager'
 import SocialMediaManager from '../social-media/SocialMediaManager'
 import SonGuncellemelerManager from '../son-guncellemeler/SonGuncellemelerManager'
+import ToplantiNotlariManager from '../toplanti-notlari/ToplantiNotlariManager'
 import ContentCard from '../ui/ContentCard'
 import TodoManager from '../todo/TodoManager'
 import SectionHeading from '../ui/SectionHeading'
@@ -94,11 +95,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
         {categorySlug === 'sosyal-medya' && <SocialMediaManager />}
         {categorySlug === 'son-guncellemeler' && <SonGuncellemelerManager />}
         {categorySlug === 'logo-fikirler' && <LogoFikirlerManager />}
-        {categorySlug === 'toplanti-notlari' && (
-          <p className="text-sm text-ink-muted">
-            Toplanti notlari buraya eklenecek.
-          </p>
-        )}
+        {categorySlug === 'toplanti-notlari' && <ToplantiNotlariManager />}
       </article>
     )
   }
