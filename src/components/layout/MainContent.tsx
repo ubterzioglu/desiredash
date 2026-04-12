@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ArrowLeft, Search } from 'lucide-react'
+import BrainstormingManager from '../brainstorming/BrainstormingManager'
 import ContactManager from '../contacts/ContactManager'
 import LogoFikirlerManager from '../logo-fikirler/LogoFikirlerManager'
 import MvpManager from '../mvp/MvpManager'
@@ -37,7 +38,8 @@ export default function MainContent({ categorySlug }: MainContentProps) {
     categorySlug === 'son-guncellemeler' ||
     categorySlug === 'logo-fikirler' ||
     categorySlug === 'toplanti-notlari' ||
-    categorySlug === 'mvp'
+    categorySlug === 'mvp' ||
+    categorySlug === 'brainstorming'
   const currentCategory = categorySlug
     ? getDocsCategories().find((category) => category.slug === categorySlug)
     : undefined
@@ -63,7 +65,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
           </Link>
         )}
 
-        {categorySlug !== 'contacts' && categorySlug !== 'todo' && categorySlug !== 'mvp' && standaloneSection?.cards.map((card, cardIndex) => {
+        {categorySlug !== 'contacts' && categorySlug !== 'todo' && categorySlug !== 'mvp' && categorySlug !== 'brainstorming' && standaloneSection?.cards.map((card, cardIndex) => {
           const Icon = card.iconKey ? getDocIcon(card.iconKey) : null
 
           return (
@@ -99,6 +101,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
         {categorySlug === 'son-guncellemeler' && <SonGuncellemelerManager />}
         {categorySlug === 'logo-fikirler' && <LogoFikirlerManager />}
         {categorySlug === 'toplanti-notlari' && <ToplantiNotlariManager />}
+        {categorySlug === 'brainstorming' && <BrainstormingManager />}
       </article>
     )
   }
