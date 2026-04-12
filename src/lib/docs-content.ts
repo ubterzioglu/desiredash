@@ -295,6 +295,41 @@ Google Drive logosunu yukle, linki buraya yapistir ve kimsin seceneginizi sec. H
   'toplanti-notlari-listesi': `Bu alan toplanti notlari icin ayrilmistir.
 
 Ilk etapta bos basliyor; ilerleyen fazda toplanti notlari ve karar ozutleri burada tutulacak.`,
+  'seo-geo-keyword': `Yapilacaklar:
+- Hedef anahtar kelimeleri belirle (Almanya, sehir bazli)
+- Rakiplerin hangi kelimelerde siralandığını analiz et
+- Long-tail keyword firsatlarini cikart
+- Arama hacmi ve zorluk skorlarina gore onceliklendir
+- Almanca + diger dil keyword siralama stratejisi hazirla`,
+  'seo-geo-on-page': `Yapilacaklar:
+- Title tag sablonlari olustur (sehir + hizmet kombinasyonlari)
+- Meta description sablonlari yaz
+- URL slug yapisi tanimla (sehir/hizmet-turu formatı)
+- H1-H6 hiyerarsisi kurgula
+- Ic linkleme haritasi ciz
+- Alt text standartlarini belirle`,
+  'seo-geo-teknik': `Yapilacaklar:
+- Core Web Vitals skorlarini olc (LCP, FID, CLS)
+- Sayfa yükleme hizini optimize et (Cloudflare CDN, resim sikistirma)
+- XML sitemap olustur ve Search Console'a gonder
+- robots.txt ayarla
+- Canonical tag stratejisi belirle
+- Schema markup uygula (LocalBusiness, Organization)
+- HTTPS ve 301 yönlendirme kontrolu`,
+  'seo-geo-local': `Yapilacaklar:
+- Almanya sehirleri icin landing page mimarisi planla
+- hreflang etiketlerini dogru ayarla (de / tr / en)
+- Google Business Profile kurulumunu planla
+- NAP tutarliligini sagla (isim, adres, telefon)
+- Sehir bazli icerik sablonlari olustur
+- Yerel backlink stratejisi gelistir`,
+  'seo-geo-icerik': `Yapilacaklar:
+- Blog mimarisi planla (cluster / pillar yöntemi)
+- Ilk 10 blog konusunu belirle
+- Landing page kopyalari yaz (sehir + hizmet turu)
+- FAQ bolumu hazirla (schema markup ile)
+- Icerik takvimi olustur (aylik)
+- Kullanici niyetine gore icerik haritalandir (bilgi / arastirma / islem)`,
   'neden-var-amac': `Bu pano su 5 temel ihtiyac icin olusturuldu:
 
 1. **Bilgi daginiklarini toplamak** — WhatsApp notlari, PDF tahtalari ve sesli fikirler tek bir yapili yerde biriksin; kaybolmasin.
