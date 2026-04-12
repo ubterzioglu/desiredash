@@ -142,7 +142,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           items={[
             'Veritabanı export ve inceleme süreci hızlandırılacak, gereksiz detaylarla vakit kaybı önlenecek.',
             'MVP için öncelikli tabloların seçilip hızlıca kurulması daha faydalı.',
-            'Gereksiz overengineering'den kaçınılarak temel yapı hızla devreye alınacak.',
+            "Gereksiz overengineering'den kaçınılarak temel yapı hızla devreye alınacak.",
             'Sonrasında yeni ihtiyaçlar göz önüne alınarak sistem genişletilecek.',
           ]}
         />
