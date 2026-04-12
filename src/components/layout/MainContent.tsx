@@ -1,23 +1,33 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { ArrowLeft, Search } from 'lucide-react'
 import ContentCard from '../ui/ContentCard'
 import SectionHeading from '../ui/SectionHeading'
 import {
   getDocsCategoryContentView,
+  getDocsCategories,
   getDocsHubContentView,
   type ContentViewSection,
   type DocCategorySlug,
 } from '@/lib/docs-data'
 import { getDocIcon } from '@/lib/docs-icons'
+import { buildDocItemHref, getDocsRouteState } from '@/lib/docs-navigation'
 
 interface MainContentProps {
   categorySlug?: DocCategorySlug
 }
 
 export default function MainContent({ categorySlug }: MainContentProps) {
+  const router = useRouter()
   const contentView = categorySlug
     ? getDocsCategoryContentView(categorySlug)
     : getDocsHubContentView()
+  const currentCategory = categorySlug
+    ? getDocsCategories().find((category) => category.slug === categorySlug)
+    : undefined
+  const activeItemId = categorySlug
+    ? getDocsRouteState(router.asPath).activeItemId
+    : undefined
   const searchInputId = `${contentView.mode}-search-preview`
   const searchHelperId = `${searchInputId}-helper`
 
@@ -60,6 +70,33 @@ export default function MainContent({ categorySlug }: MainContentProps) {
                 </span>
               ))}
             </div>
+          )}
+
+          {currentCategory && (
+            <nav
+              aria-label={`${contentView.title} bolum gezintisi`}
+              className="docs-inline-nav mt-8 border-t border-canvas-border pt-5"
+            >
+              <div className="docs-inline-nav-list">
+                {currentCategory.items.map((item, index) => {
+                  const itemNumber = String(index + 1).padStart(2, '0')
+                  const isActive = item.id === activeItemId
+
+                  return (
+                    <Link
+                      key={item.id}
+                      href={buildDocItemHref(item)}
+                      title={item.label}
+                      aria-label={`${itemNumber} ${item.label}`}
+                      aria-current={isActive ? 'location' : undefined}
+                      className={`docs-inline-nav-button ${isActive ? 'active' : ''}`}
+                    >
+                      {itemNumber}
+                    </Link>
+                  )
+                })}
+              </div>
+            </nav>
           )}
 
           {contentView.search && (

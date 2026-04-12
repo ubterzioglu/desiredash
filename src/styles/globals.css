@@ -78,6 +78,25 @@
     @apply text-xs font-semibold text-ink-muted uppercase tracking-wider px-3 py-2 opacity-50;
   }
 
+  .docs-inline-nav {
+    @apply flex justify-end;
+  }
+
+  .docs-inline-nav-list {
+    @apply flex max-w-full items-center justify-end gap-2 overflow-x-auto pb-1;
+  }
+
+  .docs-inline-nav-button {
+    @apply inline-flex h-9 min-w-9 shrink-0 items-center justify-center rounded-md border border-canvas-border bg-canvas-surface px-3 text-xs font-semibold tracking-[0.16em] text-ink-muted transition-colors hover:border-xp-blue hover:text-ink-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-elevated;
+  }
+
+  .docs-inline-nav-button.active {
+    @apply text-xp-green;
+    border-color: rgba(76, 175, 80, 0.5);
+    background-color: rgba(76, 175, 80, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(76, 175, 80, 0.2);
+  }
+
   .content-card {
     @apply rounded-lg border border-canvas-border bg-canvas-surface p-6 transition-all;
   }

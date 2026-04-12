@@ -1,19 +1,14 @@
 import type { RefObject } from 'react'
-import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import SidebarCategory from './SidebarCategory'
 import { getDocsCategories } from '@/lib/docs-data'
 import { getDocIcon } from '@/lib/docs-icons'
-import {
-  createExpandedCategoryState,
-  getDocsRouteState,
-  syncExpandedCategoryState,
-} from '@/lib/docs-navigation'
+import { getDocsRouteState } from '@/lib/docs-navigation'
 
 interface SidebarProps {
   isDesktopViewport: boolean
   isOpen: boolean
-  initialFocusRef: RefObject<HTMLButtonElement>
+  initialFocusRef: RefObject<HTMLAnchorElement>
   onClose: () => void
 }
 
@@ -24,18 +19,9 @@ export default function Sidebar({
   onClose,
 }: SidebarProps) {
   const router = useRouter()
-  const { activeCategorySlug, activeItemId } = getDocsRouteState(router.asPath)
+  const { activeCategorySlug } = getDocsRouteState(router.asPath)
   const docsCategories = getDocsCategories()
-  const [expandedCategories, setExpandedCategories] = useState(() =>
-    createExpandedCategoryState(activeCategorySlug)
-  )
   const isSidebarVisible = isDesktopViewport || isOpen
-
-  useEffect(() => {
-    setExpandedCategories((previousState) =>
-      syncExpandedCategoryState(previousState, activeCategorySlug)
-    )
-  }, [activeCategorySlug])
 
   return (
     <>
@@ -69,21 +55,9 @@ export default function Sidebar({
                   slug={category.slug}
                   title={category.label}
                   icon={<Icon size={16} />}
-                  items={category.items}
                   active={category.slug === activeCategorySlug}
-                  activeItemId={activeItemId}
-                  isExpanded={expandedCategories[category.slug]}
-                  buttonRef={index === 0 ? initialFocusRef : undefined}
-                  onToggle={() =>
-                    setExpandedCategories((previousState) => ({
-                      ...previousState,
-                      [category.slug]:
-                        category.slug === activeCategorySlug
-                          ? true
-                          : !previousState[category.slug],
-                    }))
-                  }
-                  onItemSelect={onClose}
+                  linkRef={index === 0 ? initialFocusRef : undefined}
+                  onSelect={onClose}
                 />
               )
             })}

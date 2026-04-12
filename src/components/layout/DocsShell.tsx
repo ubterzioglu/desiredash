@@ -14,7 +14,7 @@ export default function DocsShell({ children }: DocsShellProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isDesktopViewport, setIsDesktopViewport] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
-  const firstSidebarToggleRef = useRef<HTMLButtonElement>(null)
+  const firstSidebarToggleRef = useRef<HTMLAnchorElement>(null)
   const previousSidebarOpenRef = useRef(false)
 
   useEffect(() => {
