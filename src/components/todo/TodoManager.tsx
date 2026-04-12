@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { Pencil, Plus, Save, Trash2, X } from 'lucide-react'
+import AccordionCard from '../ui/AccordionCard'
 import {
   TODO_ASSIGNEES,
   TODO_STATUSES,
@@ -171,10 +172,18 @@ export default function TodoManager() {
         </p>
       </div>
 
-      <form
-        onSubmit={handleCreate}
-        className="grid gap-4 rounded-lg border border-canvas-border bg-canvas-surface p-5 md:grid-cols-2 xl:grid-cols-[1.4fr_0.9fr_0.9fr_1fr]"
-      >
+      <AccordionCard
+        defaultOpenId="new-todo"
+        items={[
+          {
+            id: 'new-todo',
+            title: 'Yeni Todo Ekle',
+            accentColor: '#1A6DC2',
+            children: (
+              <form
+                onSubmit={handleCreate}
+                className="grid gap-4 md:grid-cols-2 xl:grid-cols-[1.4fr_0.9fr_0.9fr_1fr]"
+              >
         <label className="space-y-2">
           <span className="text-sm font-medium text-ink-primary">Konu</span>
           <input
@@ -223,6 +232,12 @@ export default function TodoManager() {
                 neZaman: event.target.value,
               }))
             }
+            onKeyDown={(e) => {
+              const allowed = ['Tab', 'Enter', 'Escape']
+              if (!allowed.includes(e.key) && !e.key.startsWith('Arrow') && !e.ctrlKey && !e.altKey && !e.metaKey) {
+                e.preventDefault()
+              }
+            }}
             className="w-full rounded-md border border-canvas-border bg-canvas-elevated px-3 py-2.5 text-sm text-ink-primary outline-none transition-colors focus:border-xp-blue"
           />
         </label>
@@ -274,6 +289,10 @@ export default function TodoManager() {
           </button>
         </div>
       </form>
+            ),
+          },
+        ]}
+      />
 
       {error && (
         <div className="rounded-md border border-xp-red/40 bg-xp-red/10 px-4 py-3 text-sm text-red-200">

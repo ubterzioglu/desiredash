@@ -13,6 +13,7 @@ export default function DocsShell({ children }: DocsShellProps) {
   const router = useRouter()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isDesktopViewport, setIsDesktopViewport] = useState(false)
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const firstSidebarToggleRef = useRef<HTMLAnchorElement>(null)
   const previousSidebarOpenRef = useRef(false)
@@ -95,14 +96,21 @@ export default function DocsShell({ children }: DocsShellProps) {
         isSidebarOpen={isSidebarOpen}
         menuButtonRef={menuButtonRef}
         onMenuToggle={() => setIsSidebarOpen((previousState) => !previousState)}
+        isSidebarCollapsed={isSidebarCollapsed}
+        onSidebarCollapseToggle={() => setIsSidebarCollapsed((prev) => !prev)}
       />
       <Sidebar
         isDesktopViewport={isDesktopViewport}
         isOpen={isSidebarOpen}
         initialFocusRef={firstSidebarToggleRef}
         onClose={() => setIsSidebarOpen(false)}
+        isCollapsed={isSidebarCollapsed}
       />
-      <main id="docs-main-content" tabIndex={-1} className="docs-shell-main">
+      <main
+        id="docs-main-content"
+        tabIndex={-1}
+        className={`docs-shell-main transition-[padding-left] duration-300 ease-in-out${isDesktopViewport && !isSidebarCollapsed ? ' lg:pl-[var(--docs-sidebar-width)]' : ''}`}
+      >
         <div className="docs-shell-content">{children}</div>
       </main>
     </div>

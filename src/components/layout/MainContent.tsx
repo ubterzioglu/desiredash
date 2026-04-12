@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { ArrowLeft, Search } from 'lucide-react'
 import ContactManager from '../contacts/ContactManager'
 import LogoFikirlerManager from '../logo-fikirler/LogoFikirlerManager'
+import MvpManager from '../mvp/MvpManager'
 import SocialMediaManager from '../social-media/SocialMediaManager'
 import SonGuncellemelerManager from '../son-guncellemeler/SonGuncellemelerManager'
 import ToplantiNotlariManager from '../toplanti-notlari/ToplantiNotlariManager'
@@ -35,7 +36,8 @@ export default function MainContent({ categorySlug }: MainContentProps) {
     categorySlug === 'sosyal-medya' ||
     categorySlug === 'son-guncellemeler' ||
     categorySlug === 'logo-fikirler' ||
-    categorySlug === 'toplanti-notlari'
+    categorySlug === 'toplanti-notlari' ||
+    categorySlug === 'mvp'
   const currentCategory = categorySlug
     ? getDocsCategories().find((category) => category.slug === categorySlug)
     : undefined
@@ -61,7 +63,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
           </Link>
         )}
 
-        {categorySlug !== 'contacts' && standaloneSection?.cards.map((card, cardIndex) => {
+        {categorySlug !== 'contacts' && categorySlug !== 'todo' && categorySlug !== 'mvp' && standaloneSection?.cards.map((card, cardIndex) => {
           const Icon = card.iconKey ? getDocIcon(card.iconKey) : null
 
           return (
@@ -91,6 +93,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
         })}
 
         {categorySlug === 'todo' && <TodoManager />}
+        {categorySlug === 'mvp' && <MvpManager />}
         {categorySlug === 'contacts' && <ContactManager />}
         {categorySlug === 'sosyal-medya' && <SocialMediaManager />}
         {categorySlug === 'son-guncellemeler' && <SonGuncellemelerManager />}

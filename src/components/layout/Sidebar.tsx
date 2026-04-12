@@ -10,6 +10,7 @@ interface SidebarProps {
   isOpen: boolean
   initialFocusRef: RefObject<HTMLAnchorElement>
   onClose: () => void
+  isCollapsed?: boolean
 }
 
 export default function Sidebar({
@@ -17,11 +18,12 @@ export default function Sidebar({
   isOpen,
   initialFocusRef,
   onClose,
+  isCollapsed = false,
 }: SidebarProps) {
   const router = useRouter()
   const { activeCategorySlug } = getDocsRouteState(router.asPath)
   const docsCategories = getDocsCategories()
-  const isSidebarVisible = isDesktopViewport || isOpen
+  const isSidebarVisible = isDesktopViewport ? !isCollapsed : isOpen
 
   return (
     <>
@@ -35,10 +37,10 @@ export default function Sidebar({
       )}
       <aside
         id="docs-sidebar"
-        className={`fixed left-0 top-[var(--docs-header-height)] z-40 h-[calc(100vh-var(--docs-header-height))] w-[var(--docs-sidebar-width)] border-r border-canvas-border bg-canvas-surface transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed left-0 top-[var(--docs-header-height)] z-40 h-[calc(100vh-var(--docs-header-height))] w-[var(--docs-sidebar-width)] border-r border-canvas-border bg-canvas-surface transition-transform duration-300 ease-in-out ${
           isSidebarVisible
             ? 'visible translate-x-0'
-            : 'invisible -translate-x-full lg:visible lg:translate-x-0'
+            : 'invisible -translate-x-full'
         }`}
       >
         <nav

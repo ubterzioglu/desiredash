@@ -107,10 +107,3 @@
   }
 }
 
-@media (min-width: 1024px) {
-  @layer components {
-    .docs-shell-main {
-      padding-left: var(--docs-sidebar-width);
-    }
-  }
-}
