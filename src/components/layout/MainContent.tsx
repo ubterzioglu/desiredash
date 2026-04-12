@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ArrowLeft, Search } from 'lucide-react'
+import ContactManager from '../contacts/ContactManager'
 import ContentCard from '../ui/ContentCard'
 import TodoManager from '../todo/TodoManager'
 import SectionHeading from '../ui/SectionHeading'
@@ -24,7 +25,9 @@ export default function MainContent({ categorySlug }: MainContentProps) {
     ? getDocsCategoryContentView(categorySlug)
     : getDocsHubContentView()
   const isStandaloneCardPage =
-    categorySlug === 'neden-var' || categorySlug === 'todo'
+    categorySlug === 'neden-var' ||
+    categorySlug === 'todo' ||
+    categorySlug === 'contacts'
   const currentCategory = categorySlug
     ? getDocsCategories().find((category) => category.slug === categorySlug)
     : undefined
@@ -80,6 +83,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
         })}
 
         {categorySlug === 'todo' && <TodoManager />}
+        {categorySlug === 'contacts' && <ContactManager />}
       </article>
     )
   }

@@ -236,10 +236,14 @@ Bu yorumlar bilgi mimarisi ve ekranlar arasi gecis kurgusunu anlamak icin tutuld
 - Desiremap
 
 Bu not tek satirlik olsa da proje kimliginin merkezine yerlestirilmeli.`,
-  'contacts-kisiler': `Ilgili kisiler:
+  'contacts-listesi': `Bu alan artik tek merkezden yonetiliyor.
+
+Mevcut contacts blogundan tasinan ilk kayitlar:
 - Baran Kaplan
 - Sahin
-- UBT`,
+- UBT
+
+Asagidaki form ve liste uzerinden yeni contact eklenebilir, duzenlenebilir ve silinebilir.`,
   'links-kaynaklar': `Kaynak:
 - Blank Board PDF notlari
 
@@ -399,6 +403,8 @@ export function getDocCategoryContentView(categorySlug: DocCategorySlug): Conten
               ? 'Bu panonun rolunu aciklayan ozet icerik tek kartta tutuluyor.'
               : category.slug === 'todo'
                 ? 'Todo alani tek intro kart ve canli liste yonetimiyle calisir.'
+              : category.slug === 'contacts'
+                ? 'Contacts alani tek intro kart ve canli liste yonetimiyle calisir.'
               : 'Bu alan yeni icerikler icin acildi. Simdilik temiz bir baslangic durumu korunuyor.',
         columns: 1,
         cards: category.items.map((item, index) => ({

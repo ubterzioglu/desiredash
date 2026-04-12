@@ -304,15 +304,15 @@ export const docsCategories: DocCategoryDefinition[] = [
     defaultExpanded: false,
     overview: {
       title: 'Contacts',
-      description: 'Paydaslar, servis saglayicilar ve temel iletisim kayitlari icin alan.',
+      description: 'Paydas, kurum ve servis baglantilarinin tek listede toplandigi ve bu sayfadan yonetildigi alan.',
       ctaLabel: 'Contacts alanini ac',
     },
     items: [
       {
-        id: 'contacts-kisiler',
-        label: 'Ilgili Kisiler',
-        description: 'Baran Kaplan, Sahin ve UBT icin ayri kontak alani.',
-        href: '#contacts-kisiler',
+        id: 'contacts-listesi',
+        label: 'Contact Listesi ve Yonetim Alani',
+        description: 'Kisi ve kurum kayitlarinin bu sayfadan yonetilen canli listesi.',
+        href: '#contacts-listesi',
         categorySlug: 'contacts',
       },
     ],
