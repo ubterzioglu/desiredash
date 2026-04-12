@@ -13,6 +13,19 @@ import {
   type TodoItem,
 } from '@/lib/todo-items'
 
+const ASSIGNEE_CARDS = [
+  { assignee: 'UBT' as const, color: '#1A6DC2' },
+  { assignee: 'Baran' as const, color: '#4CAF50' },
+  { assignee: 'Sahin' as const, color: '#F5A500' },
+]
+
+const STATUS_COLORS: Record<string, string> = {
+  Baslanmadi: '#888888',
+  Beklemede: '#F5A500',
+  'Devam ediyor': '#1A6DC2',
+  Tamamlandi: '#4CAF50',
+}
+
 export default function TodoManager() {
   const [todos, setTodos] = useState<TodoItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -23,6 +36,14 @@ export default function TodoManager() {
   const [editingState, setEditingState] = useState<TodoFormState>(createEmptyTodoFormState)
 
   const isEditing = useMemo(() => editingId !== null, [editingId])
+
+  const todosByAssignee = useMemo(() => {
+    const map: Record<string, TodoItem[]> = {}
+    for (const { assignee } of ASSIGNEE_CARDS) {
+      map[assignee] = todos.filter((t) => t.kim === assignee)
+    }
+    return map
+  }, [todos])
 
   useEffect(() => {
     void loadTodos()
@@ -623,6 +644,57 @@ export default function TodoManager() {
           </>
         )}
       </div>
+
+      {/* Kişiye Göre Görevler */}
+      {!isLoading && (
+        <div className="space-y-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
+            Kişiye Göre Görevler
+          </p>
+          <AccordionCard
+            items={ASSIGNEE_CARDS.map(({ assignee, color }) => {
+              const assigneeTodos = todosByAssignee[assignee] ?? []
+              return {
+                id: `assignee-${assignee}`,
+                title: assignee,
+                badge: `${assigneeTodos.length} görev`,
+                accentColor: color,
+                children:
+                  assigneeTodos.length === 0 ? (
+                    <p className="text-sm text-ink-muted italic">Henüz görev atanmadı.</p>
+                  ) : (
+                    <ul className="divide-y divide-canvas-border">
+                      {assigneeTodos.map((todo) => (
+                        <li
+                          key={todo.id}
+                          className="flex items-center justify-between gap-3 py-2 text-sm"
+                        >
+                          <span className="text-ink-primary font-medium">{todo.konu}</span>
+                          <div className="flex shrink-0 items-center gap-2">
+                            {todo.neZaman && (
+                              <span className="text-xs text-ink-muted">
+                                {formatTodoDate(todo.neZaman)}
+                              </span>
+                            )}
+                            <span
+                              className="rounded px-1.5 py-0.5 text-[11px] font-semibold"
+                              style={{
+                                color: STATUS_COLORS[todo.durum] ?? '#888888',
+                                background: `${STATUS_COLORS[todo.durum] ?? '#888888'}22`,
+                              }}
+                            >
+                              {todo.durum}
+                            </span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  ),
+              }
+            })}
+          />
+        </div>
+      )}
     </section>
   )
 }

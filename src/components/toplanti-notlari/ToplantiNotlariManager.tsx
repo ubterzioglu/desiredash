@@ -39,26 +39,33 @@ const OZET_MADDELER: { baslik: string; aciklama: string }[] = [
 
 // ─── Accordion içerikleri ────────────────────────────────────────────────────
 
-function BulletList({ items }: { items: string[] }) {
+function BulletList({ items, tarih }: { items: string[]; tarih?: string }) {
   return (
     <ul className="space-y-2">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-2 text-sm text-ink-muted">
           <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-canvas-border" />
-          <span>{item}</span>
+          <span>
+            {tarih && (
+              <span className="mr-1.5 inline-flex items-center rounded bg-canvas-elevated px-1.5 py-0.5 text-[10px] font-semibold text-ink-muted">
+                {tarih}
+              </span>
+            )}
+            {item}
+          </span>
         </li>
       ))}
     </ul>
   )
 }
 
-function SubSection({ baslik, items }: { baslik: string; items: string[] }) {
+function SubSection({ baslik, items, tarih }: { baslik: string; items: string[]; tarih?: string }) {
   return (
     <div className="space-y-2">
       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted opacity-60">
         {baslik}
       </p>
-      <BulletList items={items} />
+      <BulletList items={items} tarih={tarih} />
     </div>
   )
 }
@@ -74,6 +81,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="12 Nisan"
           baslik="Dinamik Form ve Rezervasyon Kısıtlamaları"
           items={[
             'Formlar tamamen dinamik; kullanıcıdan katılım sayısı ve kuralları kabul etmesi gibi bilgiler alınacak.',
@@ -83,6 +91,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Çoklu Katılım ve Dolandırıcılık Kısıtlamaları"
           items={[
             'Bir kullanıcının aynı zaman diliminde üçten fazla etkinliğe katılması engellenecek.',
@@ -92,6 +101,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Audit Kayıtları ve Yasal Süreçler"
           items={[
             'Kullanıcının rezervasyon yaptığı tarih ve kabul ettiği kurallar kayıt altına alınacak.',
@@ -101,6 +111,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="MVP Aşaması ve İleri Özellikler"
           items={[
             'Canlı görüntü doğrulaması gibi ileri teknolojiler ikinci veya üçüncü aşamalarda değerlendirilecek.',
@@ -119,6 +130,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="12 Nisan"
           baslik="Veritabanı Yapısı (~44 Tablo)"
           items={[
             'Veritabanı tasarımı yaklaşık 44 tablo ile geniş ve esnek bir yapıya sahip, MVP için %80 oranında yeterli.',
@@ -128,6 +140,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Dokümantasyon Planı"
           items={[
             'Baran veritabanı tablolarının içeriğini, iş mantığını ve kullanım senaryolarını içeren doküman hazırlayacak.',
@@ -138,6 +151,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Export ve İnceleme Süreci"
           items={[
             'Veritabanı export ve inceleme süreci hızlandırılacak, gereksiz detaylarla vakit kaybı önlenecek.',
@@ -147,6 +161,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="API Endpoint Planı"
           items={[
             'İlk aşamada login, mekan listeleme ve rezervasyon oluşturma endpoint\'leri oluşturulacak.',
@@ -164,6 +179,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="12 Nisan"
           baslik="Mobil Odaklı Reklam Alanları"
           items={[
             "Kullanıcıların %90'ının mobil üzerinden erişeceği öngörüldü.",
@@ -172,8 +188,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
             'Reklamların kullanıcı deneyimini bozmadan yönetilmesi gerekiyor.',
           ]}
         />
-        <SubSection
-          baslik="Ücretlendirme Modeli"
+        <SubSection          tarih="12 Nisan"          baslik="Ücretlendirme Modeli"
           items={[
             'Reklam gösterim sürelerine göre ücretlendirme yapılacak.',
             'Mekanlar kendi bütçelerine göre reklam paketi seçebilecek.',
@@ -183,6 +198,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Premium ve Verifiye Hesaplar"
           items={[
             'En başta ~30 premium mekan seçilip liste başı gösterilecek.',
@@ -191,6 +207,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Gelir Modeli Ayrımı"
           items={[
             'Mekanlardan reklam ve görünürlük bazlı gelir beklenecek.',
@@ -209,6 +226,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="12 Nisan"
           baslik="Login Zorunluluğu"
           items={[
             'Rezervasyon yapabilmek için kullanıcıların mutlaka login olması zorunlu olacak.',
@@ -217,6 +235,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Yasal Bağlayıcı Form Bilgileri"
           items={[
             "Kullanıcının yanlış bilgi vermesi veya sahte kimlik kullanması yasal yaptırım doğuracak.",
@@ -226,6 +245,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Gizlilik ve Kullanıcı Tercihleri"
           items={[
             'Kullanıcı mail almak istemezse mekan bunu yönetebilecek.',
@@ -234,6 +254,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Çoklu Rezervasyon Engelleme"
           items={[
             'Aynı zamanda birden fazla etkinliğe katılım sınırı ve ekstra doğrulama mekanizmaları planlanıyor.',
@@ -252,6 +273,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="12 Nisan"
           baslik="MVP Önceliği"
           items={[
             'Fazla özellik eklenmeden ürünün hızlı çıkması ve gerçek kullanıcı geri dönüşlerinin alınması amaçlanıyor.',
@@ -260,6 +282,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="İş Listesi ve Aşamalandırma"
           items={[
             'Fonksiyonlar ve müşteri ihtiyaçlarına göre yapılacak iş listesi oluşturulup MVP aşamalarına göre önceliklendirilecek.',
@@ -269,6 +292,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Frontend ve Backend API Yapısı"
           items={[
             'API yapısı basit tutulacak; temel login ve rezervasyon işlemleri ilk hedef.',
@@ -277,6 +301,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Lansman Sonrası"
           items={[
             'MVP sonrası esneklik ve yeni ihtiyaçların ortaya çıkacağı öngörülüyor.',
@@ -295,6 +320,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="12 Nisan"
           baslik="Baran'ın Öncelikleri"
           items={[
             'Kısa sürede dokümantasyon tamamlanıp ekip ile paylaşılacak.',
@@ -303,6 +329,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Şahin'in Dokümantasyon İsteği"
           items={[
             'Dokümantasyon XML formatında ve akış diyagramlarıyla desteklenmeli.',
@@ -311,6 +338,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Umut'un İş Listesi"
           items={[
             'İşler MVP 1, 2 ve 3 aşamalarına göre sınıflandırılacak.',
@@ -319,6 +347,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Ekip İşbirliği"
           items={[
             'Ekip üyeleri birbirlerinin farklı iş yüklerini anlayarak destek sağlıyor.',
@@ -337,6 +366,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-6">
         <SubSection
+          tarih="12 Nisan"
           baslik="Baran Kaplan"
           items={[
             'Veri tabanının mevcut durumunu kontrol et ve veritabanı dokümantasyonunu oluştur (ER diyagramları, tablolar, ilişkiler)',
@@ -347,6 +377,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Şahincan ÖZBAKIR"
           items={[
             'Veri tabanı export alma ve analiz için Baran ile koordinasyon sağla; XML export ve dokümantasyon hazırlanmasında öncelik ver',
@@ -357,6 +388,7 @@ const ACCORDION_ITEMS: AccordionItem[] = [
           ]}
         />
         <SubSection
+          tarih="12 Nisan"
           baslik="Umut Barış Terzioğlu"
           items={[
             'Pazarlama stratejisi çerçevesinde reklam alanlarının yerleşimi ve ücretlendirme modelleri üzerine görüş bildir ve önerilerde bulun',
@@ -386,6 +418,28 @@ export default function ToplantiNotlariManager() {
           12 Nisan 2026 — Rezervasyon sistemi, veritabanı tasarımı, reklam modeli ve MVP stratejisi üzerine yapılan toplantının özeti.
         </p>
       </div>
+
+      {/* Sayfa Açıklaması */}
+      <AccordionCard
+        defaultOpenId="sayfa-aciklama"
+        items={[
+          {
+            id: 'sayfa-aciklama',
+            title: 'Sayfa Açıklaması',
+            accentColor: '#1A6DC2',
+            children: (
+              <div className="space-y-3 text-sm text-ink-muted">
+                <p>
+                  Bu sayfa toplantı notlarının yapılandırılmış özetini içerir. Her ana başlık, toplantıda ele alınan bir konuyu temsil eder.
+                </p>
+                <p>
+                  Her maddenin başındaki tarih etiketi, o kararın hangi toplantıda alındığını gösterir. Yeni toplantılar eklendiğinde mevcut başlıklara yeni tarihli maddeler eklenir — böylece hangi kararın ne zaman alındığı zaman içinde görünür hale gelir.
+                </p>
+              </div>
+            ),
+          },
+        ]}
+      />
 
       {/* Özet maddeleri */}
       <div className="rounded-lg border border-canvas-border bg-canvas-surface p-4">
