@@ -38,8 +38,11 @@ export default async function handler(
       ...(normalized.value.sorumlu !== undefined
         ? { sorumlu: normalized.value.sorumlu }
         : {}),
-      ...(normalized.value.durum !== undefined
-        ? { durum: normalized.value.durum }
+      ...(normalized.value.durum_dm !== undefined
+        ? { durum_dm: normalized.value.durum_dm }
+        : {}),
+      ...(normalized.value.durum_customer !== undefined
+        ? { durum_customer: normalized.value.durum_customer }
         : {}),
       ...(normalized.value.yorumlar !== undefined
         ? { yorumlar: normalized.value.yorumlar }
@@ -51,7 +54,7 @@ export default async function handler(
       .update(updatePayload)
       .eq('id', contactId)
       .select(
-        'id, contact, telefon, websitesi, tur, sorumlu, durum, yorumlar, created_at, updated_at'
+        'id, contact, telefon, websitesi, tur, sorumlu, durum, durum_dm, durum_customer, yorumlar, created_at, updated_at'
       )
       .single()
 

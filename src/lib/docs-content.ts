@@ -272,6 +272,29 @@ Burada ileride:
 - Sayfa durumu
 - Kullanici deneyimi eksikleri
 - Frontend teslim listesi izlenecek.`,
+  'proje-status-marketing': `Marketing status alani ilk etapta bos tutuluyor.
+
+Burada ileride:
+- Kanal stratejisi durumu
+- Kampanya takibi
+- Pazarlama blokajlari
+- Hedef kitle calismalari izlenecek.`,
+  'proje-status-pr': `PR status alani ilk etapta bos tutuluyor.
+
+Burada ileride:
+- Basin iliskileri durumu
+- Iletisim calismalari
+- PR blokajlari
+- Marka gorsel kimlik süreci izlenecek.`,
+  'son-guncellemeler-listesi': `Bu alan artik tek merkezden yonetiliyor.
+
+Ekibin zaman damgali guncelleme notlarini buraya ekleyebilirsin. Her kayit otomatik tarih ve saat alir, duzenleme yapilmaz; sadece ekleme ve silme.`,
+  'logo-fikirler-listesi': `Bu alan logo fikirlerini topluyor.
+
+Google Drive logosunu yukle, linki buraya yapistir ve kimsin seceneginizi sec. Her ekip uyesi 1-10 arasi puan verebilir. Altta logo onizleme kartlari gozukur.`,
+  'toplanti-notlari-listesi': `Bu alan toplanti notlari icin ayrilmistir.
+
+Ilk etapta bos basliyor; ilerleyen fazda toplanti notlari ve karar ozutleri burada tutulacak.`,
   'neden-var-amac': `Bu pano su 5 temel ihtiyac icin olusturuldu:
 
 1. **Bilgi daginiklarini toplamak** — WhatsApp notlari, PDF tahtalari ve sesli fikirler tek bir yapili yerde biriksin; kaybolmasin.

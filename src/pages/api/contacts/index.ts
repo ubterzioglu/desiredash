@@ -14,7 +14,7 @@ export default async function handler(
     const { data, error } = await supabaseAdmin
       .from('contact_items')
       .select(
-        'id, contact, telefon, websitesi, tur, sorumlu, durum, yorumlar, created_at, updated_at'
+        'id, contact, telefon, websitesi, tur, sorumlu, durum, durum_dm, durum_customer, yorumlar, created_at, updated_at'
       )
       .order('created_at', { ascending: false })
 
@@ -40,7 +40,8 @@ export default async function handler(
       websitesi: normalized.value.websitesi ?? null,
       tur: normalized.value.tur ?? null,
       sorumlu: normalized.value.sorumlu ?? null,
-      durum: normalized.value.durum ?? null,
+      durum_dm: normalized.value.durum_dm ?? null,
+      durum_customer: normalized.value.durum_customer ?? null,
       yorumlar: normalized.value.yorumlar ?? null,
     }
 
@@ -48,16 +49,15 @@ export default async function handler(
       .from('contact_items')
       .insert(insertPayload)
       .select(
-        'id, contact, telefon, websitesi, tur, sorumlu, durum, yorumlar, created_at, updated_at'
+        'id, contact, telefon, websitesi, tur, sorumlu, durum, durum_dm, durum_customer, yorumlar, created_at, updated_at'
       )
-      .single()
 
     if (error || !data) {
       return res.status(500).json({ error: 'Contact eklenemedi.' })
     }
 
     return res.status(201).json({
-      contact: mapContactRow(data as ContactItemRow),
+      contact: mapContactRow((data as unknown as ContactItemRow[])[0]),
     })
   }
 

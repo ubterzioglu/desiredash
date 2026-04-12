@@ -54,7 +54,7 @@ export default function Sidebar({
                   key={category.slug}
                   slug={category.slug}
                   title={category.label}
-                  icon={<Icon size={16} />}
+                  icon={<Icon size={13} />}
                   active={category.slug === activeCategorySlug}
                   linkRef={index === 0 ? initialFocusRef : undefined}
                   onSelect={onClose}

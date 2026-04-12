@@ -9,6 +9,10 @@ import {
   type ContactItem,
 } from '@/lib/contact-items'
 
+const DURUM_DM_OPTIONS = ['', 'Aranacak', 'Arandı', 'Mail Atılacak', 'Mail Atıldı'] as const
+const DURUM_CUSTOMER_OPTIONS = ['', 'Cevap Yok', 'Cevap Geldi'] as const
+const SORUMLU_OPTIONS = ['', 'UBT', 'Baran', 'Sahin'] as const
+
 export default function ContactManager() {
   const [contacts, setContacts] = useState<ContactItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -58,9 +62,7 @@ export default function ContactManager() {
     try {
       const response = await fetch('/api/contacts', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formState),
       })
       const payload = await response.json()
@@ -69,7 +71,7 @@ export default function ContactManager() {
         throw new Error(payload.error ?? 'Contact eklenemedi.')
       }
 
-      setContacts((previousContacts) => [payload.contact, ...previousContacts])
+      setContacts((prev) => [payload.contact, ...prev])
       setFormState(createEmptyContactFormState())
     } catch (createError) {
       setError(
@@ -98,9 +100,7 @@ export default function ContactManager() {
     try {
       const response = await fetch(`/api/contacts/${contactId}`, {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editingState),
       })
       const payload = await response.json()
@@ -109,10 +109,8 @@ export default function ContactManager() {
         throw new Error(payload.error ?? 'Contact guncellenemedi.')
       }
 
-      setContacts((previousContacts) =>
-        previousContacts.map((contact) =>
-          contact.id === contactId ? payload.contact : contact
-        )
+      setContacts((prev) =>
+        prev.map((c) => (c.id === contactId ? payload.contact : c))
       )
       cancelEdit()
     } catch (updateError) {
@@ -133,18 +131,14 @@ export default function ContactManager() {
     setError(null)
 
     try {
-      const response = await fetch(`/api/contacts/${contactId}`, {
-        method: 'DELETE',
-      })
+      const response = await fetch(`/api/contacts/${contactId}`, { method: 'DELETE' })
       const payload = await response.json()
 
       if (!response.ok) {
         throw new Error(payload.error ?? 'Contact silinemedi.')
       }
 
-      setContacts((previousContacts) =>
-        previousContacts.filter((contact) => contact.id !== contactId)
-      )
+      setContacts((prev) => prev.filter((c) => c.id !== contactId))
       if (editingId === contactId) {
         cancelEdit()
       }
@@ -171,68 +165,71 @@ export default function ContactManager() {
         </p>
       </div>
 
+      {/* Add form — compact single-row layout */}
       <form
         onSubmit={handleCreate}
-        className="grid gap-4 rounded-lg border border-canvas-border bg-canvas-surface p-5 md:grid-cols-2 xl:grid-cols-3"
+        className="rounded-lg border border-canvas-border bg-canvas-surface p-4"
       >
-        <FormField
-          label="Contact"
-          value={formState.contact}
-          onChange={(value) => setFormState((prev) => ({ ...prev, contact: value }))}
-          placeholder="Kisi veya kurum"
-          required
-        />
-        <FormField
-          label="Telefon"
-          value={formState.telefon}
-          onChange={(value) => setFormState((prev) => ({ ...prev, telefon: value }))}
-          placeholder="+49..."
-        />
-        <FormField
-          label="Websitesi"
-          value={formState.websitesi}
-          onChange={(value) => setFormState((prev) => ({ ...prev, websitesi: value }))}
-          placeholder="https://..."
-        />
-        <FormField
-          label="Tur"
-          value={formState.tur}
-          onChange={(value) => setFormState((prev) => ({ ...prev, tur: value }))}
-          placeholder="Paydas, kurum..."
-        />
-        <FormField
-          label="Sorumlu"
-          value={formState.sorumlu}
-          onChange={(value) => setFormState((prev) => ({ ...prev, sorumlu: value }))}
-          placeholder="UBT"
-        />
-        <FormField
-          label="Durum"
-          value={formState.durum}
-          onChange={(value) => setFormState((prev) => ({ ...prev, durum: value }))}
-          placeholder="Aktif"
-        />
-        <label className="space-y-2 md:col-span-2 xl:col-span-3">
-          <span className="text-sm font-medium text-ink-primary">Yorumlar</span>
-          <textarea
-            value={formState.yorumlar}
-            onChange={(event) =>
-              setFormState((prev) => ({ ...prev, yorumlar: event.target.value }))
-            }
-            placeholder="Ek notlar"
-            rows={4}
-            className="w-full rounded-md border border-canvas-border bg-canvas-elevated px-3 py-2.5 text-sm text-ink-primary outline-none transition-colors placeholder:text-ink-muted/50 focus:border-xp-blue"
+        <div className="flex flex-wrap items-end gap-2">
+          <CompactField
+            label="Contact"
+            value={formState.contact}
+            onChange={(v) => setFormState((prev) => ({ ...prev, contact: v }))}
+            placeholder="Kisi veya kurum"
+            required
           />
-        </label>
-        <div className="md:col-span-2 xl:col-span-3 flex justify-end">
+          <CompactField
+            label="Telefon"
+            value={formState.telefon}
+            onChange={(v) => setFormState((prev) => ({ ...prev, telefon: v }))}
+            placeholder="+49..."
+          />
+          <CompactField
+            label="Websitesi"
+            value={formState.websitesi}
+            onChange={(v) => setFormState((prev) => ({ ...prev, websitesi: v }))}
+            placeholder="https://..."
+          />
+          <CompactField
+            label="Tur"
+            value={formState.tur}
+            onChange={(v) => setFormState((prev) => ({ ...prev, tur: v }))}
+            placeholder="Paydas..."
+          />
+          <CompactSelect
+            label="Sorumlu"
+            value={formState.sorumlu}
+            options={SORUMLU_OPTIONS}
+            onChange={(v) => setFormState((prev) => ({ ...prev, sorumlu: v }))}
+          />
+          <CompactSelect
+            label="Durum DM"
+            value={formState.durum_dm}
+            options={DURUM_DM_OPTIONS}
+            onChange={(v) => setFormState((prev) => ({ ...prev, durum_dm: v }))}
+          />
+          <CompactSelect
+            label="Durum Customer"
+            value={formState.durum_customer}
+            options={DURUM_CUSTOMER_OPTIONS}
+            onChange={(v) => setFormState((prev) => ({ ...prev, durum_customer: v }))}
+          />
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-xp-blue px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+            className="inline-flex h-9 items-center justify-center gap-1.5 self-end rounded-md bg-xp-blue px-3 text-xs font-semibold text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            <Plus size={16} aria-hidden="true" />
-            {isSubmitting ? 'Kaydediliyor...' : 'Yeni ekle'}
+            <Plus size={13} aria-hidden="true" />
+            {isSubmitting ? 'Kaydediliyor...' : 'Ekle'}
           </button>
+        </div>
+        <div className="mt-2">
+          <CompactTextarea
+            label="Yorumlar"
+            value={formState.yorumlar}
+            onChange={(v) => setFormState((prev) => ({ ...prev, yorumlar: v }))}
+            placeholder="Ek notlar"
+          />
         </div>
       </form>
 
@@ -253,6 +250,7 @@ export default function ContactManager() {
           </div>
         ) : (
           <>
+            {/* Desktop table */}
             <div className="hidden overflow-x-auto rounded-lg border border-canvas-border bg-canvas-surface md:block">
               <table className="min-w-full border-collapse text-sm">
                 <thead className="bg-canvas-elevated text-left text-xs uppercase tracking-[0.16em] text-ink-muted">
@@ -262,7 +260,8 @@ export default function ContactManager() {
                     <th className="px-4 py-3 font-semibold">Websitesi</th>
                     <th className="px-4 py-3 font-semibold">Tur</th>
                     <th className="px-4 py-3 font-semibold">Sorumlu</th>
-                    <th className="px-4 py-3 font-semibold">Durum</th>
+                    <th className="px-4 py-3 font-semibold">Durum DM</th>
+                    <th className="px-4 py-3 font-semibold">Durum Customer</th>
                     <th className="px-4 py-3 font-semibold">Yorumlar</th>
                     <th className="px-4 py-3 font-semibold">Islemler</th>
                   </tr>
@@ -276,59 +275,48 @@ export default function ContactManager() {
                         <EditableCell
                           editing={rowIsEditing}
                           value={rowIsEditing ? editingState.contact : contact.contact}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, contact: value }))
-                          }
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, contact: v }))}
                           required
                         />
                         <EditableCell
                           editing={rowIsEditing}
                           value={rowIsEditing ? editingState.telefon : contact.telefon ?? '-'}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, telefon: value }))
-                          }
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, telefon: v }))}
                         />
                         <EditableCell
                           editing={rowIsEditing}
-                          value={
-                            rowIsEditing ? editingState.websitesi : contact.websitesi ?? '-'
-                          }
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, websitesi: value }))
-                          }
+                          value={rowIsEditing ? editingState.websitesi : contact.websitesi ?? '-'}
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, websitesi: v }))}
                         />
                         <EditableCell
                           editing={rowIsEditing}
                           value={rowIsEditing ? editingState.tur : contact.tur ?? '-'}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, tur: value }))
-                          }
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, tur: v }))}
                         />
-                        <EditableCell
+                        <EditableSelectCell
                           editing={rowIsEditing}
-                          value={
-                            rowIsEditing ? editingState.sorumlu : contact.sorumlu ?? '-'
-                          }
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, sorumlu: value }))
-                          }
+                          value={rowIsEditing ? editingState.sorumlu : contact.sorumlu ?? ''}
+                          options={SORUMLU_OPTIONS}
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, sorumlu: v }))}
                         />
-                        <EditableCell
+                        <EditableSelectCell
                           editing={rowIsEditing}
-                          value={rowIsEditing ? editingState.durum : contact.durum ?? '-'}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, durum: value }))
-                          }
+                          value={rowIsEditing ? editingState.durum_dm : contact.durum_dm ?? ''}
+                          options={DURUM_DM_OPTIONS}
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, durum_dm: v }))}
                         />
-                        <td className="max-w-sm px-4 py-3 text-ink-muted">
+                        <EditableSelectCell
+                          editing={rowIsEditing}
+                          value={rowIsEditing ? editingState.durum_customer : contact.durum_customer ?? ''}
+                          options={DURUM_CUSTOMER_OPTIONS}
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, durum_customer: v }))}
+                        />
+                        <td className="max-w-[14rem] px-4 py-3 text-ink-muted">
                           {rowIsEditing ? (
                             <textarea
                               value={editingState.yorumlar}
-                              onChange={(event) =>
-                                setEditingState((prev) => ({
-                                  ...prev,
-                                  yorumlar: event.target.value,
-                                }))
+                              onChange={(e) =>
+                                setEditingState((prev) => ({ ...prev, yorumlar: e.target.value }))
                               }
                               rows={3}
                               className="w-full rounded-md border border-canvas-border bg-canvas-elevated px-3 py-2 text-sm text-ink-primary outline-none focus:border-xp-blue"
@@ -389,6 +377,7 @@ export default function ContactManager() {
               </table>
             </div>
 
+            {/* Mobile cards */}
             <div className="space-y-3 md:hidden">
               {contacts.map((contact) => {
                 const rowIsEditing = editingId === contact.id
@@ -400,65 +389,50 @@ export default function ContactManager() {
                   >
                     {rowIsEditing ? (
                       <div className="grid gap-3">
-                        <FormField
+                        <CompactField
                           label="Contact"
                           value={editingState.contact}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, contact: value }))
-                          }
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, contact: v }))}
                           required
                         />
-                        <FormField
+                        <CompactField
                           label="Telefon"
                           value={editingState.telefon}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, telefon: value }))
-                          }
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, telefon: v }))}
                         />
-                        <FormField
+                        <CompactField
                           label="Websitesi"
                           value={editingState.websitesi}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, websitesi: value }))
-                          }
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, websitesi: v }))}
                         />
-                        <FormField
+                        <CompactField
                           label="Tur"
                           value={editingState.tur}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, tur: value }))
-                          }
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, tur: v }))}
                         />
-                        <FormField
+                        <CompactSelect
                           label="Sorumlu"
                           value={editingState.sorumlu}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, sorumlu: value }))
-                          }
+                          options={SORUMLU_OPTIONS}
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, sorumlu: v }))}
                         />
-                        <FormField
-                          label="Durum"
-                          value={editingState.durum}
-                          onChange={(value) =>
-                            setEditingState((prev) => ({ ...prev, durum: value }))
-                          }
+                        <CompactSelect
+                          label="Durum DM"
+                          value={editingState.durum_dm}
+                          options={DURUM_DM_OPTIONS}
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, durum_dm: v }))}
                         />
-                        <label className="space-y-2">
-                          <span className="text-sm font-medium text-ink-primary">
-                            Yorumlar
-                          </span>
-                          <textarea
-                            value={editingState.yorumlar}
-                            onChange={(event) =>
-                              setEditingState((prev) => ({
-                                ...prev,
-                                yorumlar: event.target.value,
-                              }))
-                            }
-                            rows={3}
-                            className="w-full rounded-md border border-canvas-border bg-canvas-elevated px-3 py-2 text-sm text-ink-primary outline-none focus:border-xp-blue"
-                          />
-                        </label>
+                        <CompactSelect
+                          label="Durum Customer"
+                          value={editingState.durum_customer}
+                          options={DURUM_CUSTOMER_OPTIONS}
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, durum_customer: v }))}
+                        />
+                        <CompactTextarea
+                          label="Yorumlar"
+                          value={editingState.yorumlar}
+                          onChange={(v) => setEditingState((prev) => ({ ...prev, yorumlar: v }))}
+                        />
                       </div>
                     ) : (
                       <>
@@ -475,7 +449,8 @@ export default function ContactManager() {
                           <InfoPair label="Websitesi" value={contact.websitesi ?? '-'} />
                           <InfoPair label="Tur" value={contact.tur ?? '-'} />
                           <InfoPair label="Sorumlu" value={contact.sorumlu ?? '-'} />
-                          <InfoPair label="Durum" value={contact.durum ?? '-'} />
+                          <InfoPair label="Durum DM" value={contact.durum_dm ?? '-'} />
+                          <InfoPair label="Durum Customer" value={contact.durum_customer ?? '-'} />
                         </div>
                       </>
                     )}
@@ -534,7 +509,9 @@ export default function ContactManager() {
   )
 }
 
-function FormField({
+// ─── Sub-components ───────────────────────────────────────────────────────────
+
+function CompactField({
   label,
   value,
   onChange,
@@ -543,20 +520,80 @@ function FormField({
 }: {
   label: string
   value: string
-  onChange: (value: string) => void
+  onChange: (v: string) => void
   placeholder?: string
   required?: boolean
 }) {
   return (
-    <label className="space-y-2">
-      <span className="text-sm font-medium text-ink-primary">{label}</span>
+    <label className="flex min-w-[8rem] flex-1 flex-col gap-1">
+      <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-muted">
+        {label}
+      </span>
       <input
         type="text"
         value={value}
-        onChange={(event) => onChange(event.target.value)}
+        onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="w-full rounded-md border border-canvas-border bg-canvas-elevated px-3 py-2.5 text-sm text-ink-primary outline-none transition-colors placeholder:text-ink-muted/50 focus:border-xp-blue"
+        className="h-9 rounded-md border border-canvas-border bg-canvas-elevated px-2.5 text-sm text-ink-primary outline-none transition-colors placeholder:text-ink-muted/50 focus:border-xp-blue"
+      />
+    </label>
+  )
+}
+
+function CompactSelect({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string
+  value: string
+  options: readonly string[]
+  onChange: (v: string) => void
+}) {
+  return (
+    <label className="flex min-w-[8rem] flex-1 flex-col gap-1">
+      <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-muted">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-9 rounded-md border border-canvas-border bg-canvas-elevated px-2.5 text-sm text-ink-primary outline-none transition-colors focus:border-xp-blue"
+      >
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt === '' ? '—' : opt}
+          </option>
+        ))}
+      </select>
+    </label>
+  )
+}
+
+function CompactTextarea({
+  label,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string
+  value: string
+  onChange: (v: string) => void
+  placeholder?: string
+}) {
+  return (
+    <label className="flex w-full flex-col gap-1">
+      <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-muted">
+        {label}
+      </span>
+      <textarea
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        rows={2}
+        className="w-full rounded-md border border-canvas-border bg-canvas-elevated px-2.5 py-2 text-sm text-ink-primary outline-none transition-colors placeholder:text-ink-muted/50 focus:border-xp-blue"
       />
     </label>
   )
@@ -570,7 +607,7 @@ function EditableCell({
 }: {
   editing: boolean
   value: string
-  onChange: (value: string) => void
+  onChange: (v: string) => void
   required?: boolean
 }) {
   return (
@@ -579,12 +616,44 @@ function EditableCell({
         <input
           type="text"
           value={value === '-' ? '' : value}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(e) => onChange(e.target.value)}
           required={required}
-          className="w-full rounded-md border border-canvas-border bg-canvas-elevated px-3 py-2 text-sm text-ink-primary outline-none focus:border-xp-blue"
+          className="w-full min-w-[6rem] rounded-md border border-canvas-border bg-canvas-elevated px-2.5 py-1.5 text-sm text-ink-primary outline-none focus:border-xp-blue"
         />
       ) : (
         value
+      )}
+    </td>
+  )
+}
+
+function EditableSelectCell({
+  editing,
+  value,
+  options,
+  onChange,
+}: {
+  editing: boolean
+  value: string
+  options: readonly string[]
+  onChange: (v: string) => void
+}) {
+  return (
+    <td className="px-4 py-3 text-ink-muted">
+      {editing ? (
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="rounded-md border border-canvas-border bg-canvas-elevated px-2.5 py-1.5 text-sm text-ink-primary outline-none focus:border-xp-blue"
+        >
+          {options.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt === '' ? '—' : opt}
+            </option>
+          ))}
+        </select>
+      ) : (
+        value || '-'
       )}
     </td>
   )
@@ -596,7 +665,7 @@ function InfoPair({ label, value }: { label: string; value: string }) {
       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-muted">
         {label}
       </p>
-      <p className="text-sm text-ink-primary break-words">{value}</p>
+      <p className="break-words text-sm text-ink-primary">{value}</p>
     </div>
   )
 }

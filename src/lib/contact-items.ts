@@ -6,6 +6,8 @@ export interface ContactItemRow {
   tur: string | null
   sorumlu: string | null
   durum: string | null
+  durum_dm: string | null
+  durum_customer: string | null
   yorumlar: string | null
   created_at: string
   updated_at: string
@@ -19,6 +21,8 @@ export interface ContactItem {
   tur: string | null
   sorumlu: string | null
   durum: string | null
+  durum_dm: string | null
+  durum_customer: string | null
   yorumlar: string | null
   createdAt: string
   updatedAt: string
@@ -30,7 +34,8 @@ export interface ContactMutationInput {
   websitesi: string | null
   tur: string | null
   sorumlu: string | null
-  durum: string | null
+  durum_dm: string | null
+  durum_customer: string | null
   yorumlar: string | null
 }
 
@@ -40,7 +45,8 @@ export interface ContactFormState {
   websitesi: string
   tur: string
   sorumlu: string
-  durum: string
+  durum_dm: string
+  durum_customer: string
   yorumlar: string
 }
 
@@ -51,7 +57,8 @@ export function createEmptyContactFormState(): ContactFormState {
     websitesi: '',
     tur: '',
     sorumlu: '',
-    durum: '',
+    durum_dm: '',
+    durum_customer: '',
     yorumlar: '',
   }
 }
@@ -65,6 +72,8 @@ export function mapContactRow(row: ContactItemRow): ContactItem {
     tur: row.tur,
     sorumlu: row.sorumlu,
     durum: row.durum,
+    durum_dm: row.durum_dm,
+    durum_customer: row.durum_customer,
     yorumlar: row.yorumlar,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
@@ -112,7 +121,8 @@ export function normalizeContactMutationInput(
     'websitesi',
     'tur',
     'sorumlu',
-    'durum',
+    'durum_dm',
+    'durum_customer',
     'yorumlar',
   ]
 
@@ -143,7 +153,8 @@ export function toContactFormState(item: ContactItem): ContactFormState {
     websitesi: item.websitesi ?? '',
     tur: item.tur ?? '',
     sorumlu: item.sorumlu ?? '',
-    durum: item.durum ?? '',
+    durum_dm: item.durum_dm ?? '',
+    durum_customer: item.durum_customer ?? '',
     yorumlar: item.yorumlar ?? '',
   }
 }

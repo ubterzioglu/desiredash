@@ -9,6 +9,9 @@ export type DocCategorySlug =
   | 'links'
   | 'proje-status'
   | 'neden-var'
+  | 'son-guncellemeler'
+  | 'logo-fikirler'
+  | 'toplanti-notlari'
 
 export type DocIconKey =
   | 'book'
@@ -385,6 +388,83 @@ export const docsCategories: DocCategoryDefinition[] = [
         description: 'Arayuz, deneyim ve teslim akislarinin durum takibi.',
         href: '#proje-status-frontend',
         categorySlug: 'proje-status',
+      },
+      {
+        id: 'proje-status-marketing',
+        label: 'Marketing',
+        description: 'Pazarlama akisi, kanal stratejisi ve kampanya durum takibi.',
+        href: '#proje-status-marketing',
+        categorySlug: 'proje-status',
+      },
+      {
+        id: 'proje-status-pr',
+        label: 'PR',
+        description: 'PR calismalari, basin iliskileri ve iletisim durum takibi.',
+        href: '#proje-status-pr',
+        categorySlug: 'proje-status',
+      },
+    ],
+  },
+  {
+    slug: 'son-guncellemeler',
+    label: 'SON GUNCELLEMELER',
+    shortDescription: 'Ekip guncellemeleri ve son notlarin tutuldugu alan.',
+    iconKey: 'file-text',
+    defaultExpanded: false,
+    overview: {
+      title: 'Son Guncellemeler',
+      description: 'Ekip tarafindan eklenen zaman damgali son guncellemeler ve notlar.',
+      ctaLabel: 'Guncellemeleri goster',
+    },
+    items: [
+      {
+        id: 'son-guncellemeler-listesi',
+        label: 'Guncelleme Listesi',
+        description: 'Ekip tarafindan eklenen son guncellemelerin canli listesi.',
+        href: '#son-guncellemeler-listesi',
+        categorySlug: 'son-guncellemeler',
+      },
+    ],
+  },
+  {
+    slug: 'logo-fikirler',
+    label: 'LOGO FIKIRLER',
+    shortDescription: 'Logo onerileri, linkler ve 1-10 puan sistemi.',
+    iconKey: 'layers',
+    defaultExpanded: false,
+    overview: {
+      title: 'Logo Fikirler',
+      description: 'Google Drive logo linklerinin eklenip puan verildigi alan.',
+      ctaLabel: 'Logo fikirlerini goster',
+    },
+    items: [
+      {
+        id: 'logo-fikirler-listesi',
+        label: 'Logo Listesi ve Puan Alani',
+        description: 'Logo linklerinin eklenip her kisi tarafindan puanlanabildigi canli liste.',
+        href: '#logo-fikirler-listesi',
+        categorySlug: 'logo-fikirler',
+      },
+    ],
+  },
+  {
+    slug: 'toplanti-notlari',
+    label: 'TOPLANTI NOTLARI',
+    shortDescription: 'Toplanti notlari ve karar ozutleri icin ayrilmis alan.',
+    iconKey: 'file-text',
+    defaultExpanded: false,
+    overview: {
+      title: 'Toplanti Notlari',
+      description: 'Toplantilarda alinan notlar ve karar ozutleri burada tutulacak.',
+      ctaLabel: 'Toplanti notlarini ac',
+    },
+    items: [
+      {
+        id: 'toplanti-notlari-listesi',
+        label: 'Toplanti Notlari',
+        description: 'Toplanti kayitlari ve karar ozutleri icin hazir alan.',
+        href: '#toplanti-notlari-listesi',
+        categorySlug: 'toplanti-notlari',
       },
     ],
   },

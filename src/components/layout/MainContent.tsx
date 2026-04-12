@@ -2,7 +2,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ArrowLeft, Search } from 'lucide-react'
 import ContactManager from '../contacts/ContactManager'
+import LogoFikirlerManager from '../logo-fikirler/LogoFikirlerManager'
 import SocialMediaManager from '../social-media/SocialMediaManager'
+import SonGuncellemelerManager from '../son-guncellemeler/SonGuncellemelerManager'
 import ContentCard from '../ui/ContentCard'
 import TodoManager from '../todo/TodoManager'
 import SectionHeading from '../ui/SectionHeading'
@@ -29,7 +31,10 @@ export default function MainContent({ categorySlug }: MainContentProps) {
     categorySlug === 'neden-var' ||
     categorySlug === 'todo' ||
     categorySlug === 'contacts' ||
-    categorySlug === 'sosyal-medya'
+    categorySlug === 'sosyal-medya' ||
+    categorySlug === 'son-guncellemeler' ||
+    categorySlug === 'logo-fikirler' ||
+    categorySlug === 'toplanti-notlari'
   const currentCategory = categorySlug
     ? getDocsCategories().find((category) => category.slug === categorySlug)
     : undefined
@@ -55,7 +60,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
           </Link>
         )}
 
-        {standaloneSection?.cards.map((card, cardIndex) => {
+        {categorySlug !== 'contacts' && standaloneSection?.cards.map((card, cardIndex) => {
           const Icon = card.iconKey ? getDocIcon(card.iconKey) : null
 
           return (
@@ -87,6 +92,13 @@ export default function MainContent({ categorySlug }: MainContentProps) {
         {categorySlug === 'todo' && <TodoManager />}
         {categorySlug === 'contacts' && <ContactManager />}
         {categorySlug === 'sosyal-medya' && <SocialMediaManager />}
+        {categorySlug === 'son-guncellemeler' && <SonGuncellemelerManager />}
+        {categorySlug === 'logo-fikirler' && <LogoFikirlerManager />}
+        {categorySlug === 'toplanti-notlari' && (
+          <p className="text-sm text-ink-muted">
+            Toplanti notlari buraya eklenecek.
+          </p>
+        )}
       </article>
     )
   }
