@@ -5,6 +5,7 @@ export type DocCategorySlug =
   | 'milestones'
   | 'proje-takip'
   | 'contacts'
+  | 'sosyal-medya'
   | 'links'
   | 'proje-status'
   | 'neden-var'
@@ -314,6 +315,27 @@ export const docsCategories: DocCategoryDefinition[] = [
         description: 'Kisi ve kurum kayitlarinin bu sayfadan yonetilen canli listesi.',
         href: '#contacts-listesi',
         categorySlug: 'contacts',
+      },
+    ],
+  },
+  {
+    slug: 'sosyal-medya',
+    label: 'SOSYAL MEDYA',
+    shortDescription: 'Sosyal medya hesaplari, linkleri ve takipci takibi icin merkezi liste alani.',
+    iconKey: 'layers',
+    defaultExpanded: false,
+    overview: {
+      title: 'Sosyal Medya',
+      description: 'Instagram, TikTok, YouTube ve X hesaplarini tek yerden tutan ve takipci sayilarini izleyen alan.',
+      ctaLabel: 'Sosyal medya alanini ac',
+    },
+    items: [
+      {
+        id: 'sosyal-medya-listesi',
+        label: 'Sosyal Medya Listesi ve Yonetim Alani',
+        description: 'Hesap linklerinin ve takipci guncelleme akislarinin bu sayfadan yonetildigi canli liste.',
+        href: '#sosyal-medya-listesi',
+        categorySlug: 'sosyal-medya',
       },
     ],
   },

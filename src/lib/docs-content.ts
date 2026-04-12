@@ -244,6 +244,11 @@ Mevcut contacts blogundan tasinan ilk kayitlar:
 - UBT
 
 Asagidaki form ve liste uzerinden yeni contact eklenebilir, duzenlenebilir ve silinebilir.`,
+  'sosyal-medya-listesi': `Bu alan artik tek merkezden yonetiliyor.
+
+Instagram, TikTok, YouTube ve X linklerini burada tutabilir, hesaplarin durumunu izleyebilir ve uygun oldugunda guncel takipci sayisini cekebilirsin.
+
+Asagidaki form ve liste uzerinden yeni hesap eklenebilir, duzenlenebilir ve silinebilir.`,
   'links-kaynaklar': `Kaynak:
 - Blank Board PDF notlari
 
@@ -405,6 +410,8 @@ export function getDocCategoryContentView(categorySlug: DocCategorySlug): Conten
                 ? 'Todo alani tek intro kart ve canli liste yonetimiyle calisir.'
               : category.slug === 'contacts'
                 ? 'Contacts alani tek intro kart ve canli liste yonetimiyle calisir.'
+              : category.slug === 'sosyal-medya'
+                ? 'Sosyal medya alani tek intro kart ve takipci odakli liste yonetimiyle calisir.'
               : 'Bu alan yeni icerikler icin acildi. Simdilik temiz bir baslangic durumu korunuyor.',
         columns: 1,
         cards: category.items.map((item, index) => ({
