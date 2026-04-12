@@ -152,22 +152,18 @@ Bu sayfa sonraki sprintlerde onceliklendirme listesine donusturulmeli.`,
 - Conversion odakli landing page copy
 
 Bu alan, MVP sonrasinda karar verilen ciktilarin uretim backlog'una donusecek.`,
-  'todo-teknik-yapilacaklar': `Teknik yapilacaklar:
+  'todo-listesi': `Bu alan artik tek merkezden yonetiliyor.
+
+Mevcut backlogtan tasinan ana maddeler:
 - DB Design
 - Security / Backend Mimarisi
-
-Bu blok Blank Board notlarindaki dogrudan todo kalemlerini korur.`,
-  'todo-egitim': `Egitim:
 - JS / TS kurslarini bitir
-
-Bu not bireysel hazirlik ve delivery kapasitesi icin ayri tutuldu.`,
-  'todo-operasyonel-basliklar': `Yonetim alanlari ve tekrar eden ana sistem bilesenleri:
 - Rezervasyon
 - Admin paneli
 - Nested UI (isletmelerden veri cekme)
 - Yasal surecler
 
-Ayni dörtlü not tahtasinda tekrar tekrar geciyor; bu nedenle backbone olarak ele alinmali.`,
+Asagidaki form ve liste uzerinden yeni todo eklenebilir, duzenlenebilir ve silinebilir.`,
   'brainstorming-genel-notlar': `Genel notlar:
 - +18 schemalardan safe search false getirilmesi
 - Arayuz yapisi tartisilacak (sehirlere / eyalete gore arka plan)
@@ -401,6 +397,8 @@ export function getDocCategoryContentView(categorySlug: DocCategorySlug): Conten
             ? 'dm_ubt_docu kaynagindan duzenlenmis ana basliklar asagida bloklar halinde yer aliyor.'
             : category.slug === 'neden-var'
               ? 'Bu panonun rolunu aciklayan ozet icerik tek kartta tutuluyor.'
+              : category.slug === 'todo'
+                ? 'Todo alani tek intro kart ve canli liste yonetimiyle calisir.'
               : 'Bu alan yeni icerikler icin acildi. Simdilik temiz bir baslangic durumu korunuyor.',
         columns: 1,
         cards: category.items.map((item, index) => ({

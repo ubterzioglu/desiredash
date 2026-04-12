@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ArrowLeft, Search } from 'lucide-react'
 import ContentCard from '../ui/ContentCard'
+import TodoManager from '../todo/TodoManager'
 import SectionHeading from '../ui/SectionHeading'
 import {
   getDocsCategoryContentView,
@@ -22,6 +23,8 @@ export default function MainContent({ categorySlug }: MainContentProps) {
   const contentView = categorySlug
     ? getDocsCategoryContentView(categorySlug)
     : getDocsHubContentView()
+  const isStandaloneCardPage =
+    categorySlug === 'neden-var' || categorySlug === 'todo'
   const currentCategory = categorySlug
     ? getDocsCategories().find((category) => category.slug === categorySlug)
     : undefined
@@ -30,6 +33,56 @@ export default function MainContent({ categorySlug }: MainContentProps) {
     : undefined
   const searchInputId = `${contentView.mode}-search-preview`
   const searchHelperId = `${searchInputId}-helper`
+
+  if (isStandaloneCardPage) {
+    const standaloneSection = contentView.sections[0]
+
+    return (
+      <article className="space-y-6">
+        {contentView.backLink && (
+          <Link
+            href={contentView.backLink.href}
+            className="inline-flex items-center gap-2 rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-xp-blue focus-visible:ring-offset-2 focus-visible:ring-offset-canvas-base"
+            style={{ color: '#CC3300' }}
+          >
+            <ArrowLeft size={16} aria-hidden="true" />
+            {contentView.backLink.label}
+          </Link>
+        )}
+
+        {standaloneSection?.cards.map((card, cardIndex) => {
+          const Icon = card.iconKey ? getDocIcon(card.iconKey) : null
+
+          return (
+            <ContentCard
+              key={card.id}
+              title={card.title}
+              description={card.description}
+              detail={card.detail}
+              badge={card.badge}
+              eyebrow={card.eyebrow}
+              density={card.density}
+              anchorId={card.anchorId}
+              xpColorIndex={cardIndex}
+              icon={Icon ? <Icon size={20} /> : undefined}
+              action={
+                card.action?.type === 'link'
+                  ? {
+                      type: 'link',
+                      href: card.action.href,
+                      label: card.action.label,
+                      surface: card.action.surface,
+                    }
+                  : undefined
+              }
+            />
+          )
+        })}
+
+        {categorySlug === 'todo' && <TodoManager />}
+      </article>
+    )
+  }
 
   return (
     <article className="space-y-10">
