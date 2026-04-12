@@ -346,15 +346,15 @@ export function getDocsHubContentView(): ContentView {
     eyebrow: 'Project Space',
     title: 'DesireMap Workspace',
     description:
-      'Yeni dokuman yapisi temizlendi. Sol menude MVP, operasyon panelleri ve teknik status alanlari bulunuyor.',
+      'Yeni dokuman yapisi giris, MVP, operasyon panelleri ve teknik status alanlari etrafinda duzenlendi.',
     supportingText:
-      'Ilk etapta ana icerik MVP altinda derlendi; diger alanlar yeni notlar icin hazirlandi.',
+      'Workspace akisi artik once bu panonun amacini anlatiyor, sonra urun ve operasyon notlarina iniyor.',
     sections: [
       {
         id: 'workspace-sections',
         title: 'Workspace Alanlari',
         description:
-          'Her kart ilgili calisma alanina gider. MVP disindaki bolumler su anda temiz bir baslangic durumu tasiyor.',
+          'Her kart ilgili calisma alanina gider. Giris karti panonun rolunu ozetler; diger alanlar urun ve operasyon akislarini toplar.',
         columns: 2,
         cards: docsOverviewCards.map((card) => ({
           id: card.id,
@@ -399,7 +399,9 @@ export function getDocCategoryContentView(categorySlug: DocCategorySlug): Conten
         description:
           category.slug === 'mvp'
             ? 'dm_ubt_docu kaynagindan duzenlenmis ana basliklar asagida bloklar halinde yer aliyor.'
-            : 'Bu alan yeni icerikler icin acildi. Simdilik temiz bir baslangic durumu korunuyor.',
+            : category.slug === 'neden-var'
+              ? 'Bu panonun rolunu aciklayan ozet icerik tek kartta tutuluyor.'
+              : 'Bu alan yeni icerikler icin acildi. Simdilik temiz bir baslangic durumu korunuyor.',
         columns: 1,
         cards: category.items.map((item, index) => ({
           id: item.id,

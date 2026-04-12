@@ -72,7 +72,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
             </div>
           )}
 
-          {currentCategory && (
+          {currentCategory && currentCategory.items.length > 1 && (
             <nav
               aria-label={`${contentView.title} bolum gezintisi`}
               className="docs-inline-nav mt-8 border-t border-canvas-border pt-5"
