@@ -8,6 +8,59 @@ import {
 
 const SELECT_FIELDS =
   'id, kimsin, logo_link, puan_ubt, puan_baran, puan_sahin, created_at'
+const DEFAULT_LOGO_BUCKET = 'logo-fikirler'
+const LOGO_BUCKET = process.env.SUPABASE_LOGO_BUCKET?.trim() || DEFAULT_LOGO_BUCKET
+const SUPABASE_PUBLIC_STORAGE_SEGMENT = '/storage/v1/object/public/'
+
+function isHttpUrl(value: string): boolean {
+  try {
+    const parsed = new URL(value)
+    return parsed.protocol === 'https:' || parsed.protocol === 'http:'
+  } catch {
+    return false
+  }
+}
+
+function toPublicLogoUrl(raw: string): string {
+  const input = raw.trim()
+
+  if (!input) {
+    return input
+  }
+
+  if (input.includes(SUPABASE_PUBLIC_STORAGE_SEGMENT)) {
+    return input
+  }
+
+  if (input.startsWith('supabase://')) {
+    const withoutScheme = input.slice('supabase://'.length)
+    const firstSlashIndex = withoutScheme.indexOf('/')
+
+    if (firstSlashIndex > 0) {
+      const bucketFromUrl = withoutScheme.slice(0, firstSlashIndex)
+      const pathFromUrl = withoutScheme.slice(firstSlashIndex + 1)
+      return supabaseAdmin.storage.from(bucketFromUrl).getPublicUrl(pathFromUrl).data.publicUrl
+    }
+  }
+
+  if (isHttpUrl(input)) {
+    return input
+  }
+
+  const normalizedPath = input.startsWith(`${LOGO_BUCKET}/`)
+    ? input.slice(LOGO_BUCKET.length + 1)
+    : input.replace(/^\/+/, '')
+
+  return supabaseAdmin.storage.from(LOGO_BUCKET).getPublicUrl(normalizedPath).data.publicUrl
+}
+
+function mapWithPublicLogoUrl(row: LogoFikirRow) {
+  const mapped = mapLogoFikirRow(row)
+  return {
+    ...mapped,
+    logoLink: toPublicLogoUrl(mapped.logoLink),
+  }
+}
 
 export default async function handler(
   req: NextApiRequest,
@@ -38,7 +91,7 @@ export default async function handler(
       return res.status(500).json({ error: 'Puan guncellenemedi.' })
     }
 
-    return res.status(200).json({ item: mapLogoFikirRow(data as LogoFikirRow) })
+    return res.status(200).json({ item: mapWithPublicLogoUrl(data as LogoFikirRow) })
   }
 
   if (req.method === 'DELETE') {

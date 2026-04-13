@@ -208,6 +208,7 @@ export default function LogoFikirlerManager() {
               <thead className="bg-canvas-elevated text-left text-xs uppercase tracking-[0.16em] text-ink-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Kimsin</th>
+                  <th className="px-4 py-3 font-semibold">Onizleme</th>
                   <th className="px-4 py-3 font-semibold">Logo Link</th>
                   <th className="px-4 py-3 font-semibold">Puan UBT</th>
                   <th className="px-4 py-3 font-semibold">Puan Baran</th>
@@ -219,6 +220,9 @@ export default function LogoFikirlerManager() {
                 {items.map((item) => (
                   <tr key={item.id} className="border-t border-canvas-border">
                     <td className="px-4 py-3 text-ink-muted">{item.kimsin}</td>
+                    <td className="px-4 py-3">
+                      <LogoPreviewImage src={item.logoLink} alt={`${item.kimsin} logo`} />
+                    </td>
                     <td className="max-w-xs px-4 py-3">
                       <a
                         href={item.logoLink}
@@ -282,6 +286,7 @@ export default function LogoFikirlerManager() {
                       Logoyu Gör
                     </a>
                   </div>
+                  <LogoPreviewImage src={item.logoLink} alt={`${item.kimsin} logo`} large />
                   <div className="flex flex-wrap gap-2">
                     {SCORE_MAP.map(({ label, key }) => {
                       const score = item[key] as number | null
@@ -309,6 +314,43 @@ export default function LogoFikirlerManager() {
         </>
       )}
     </section>
+  )
+}
+
+function LogoPreviewImage({
+  src,
+  alt,
+  large = false,
+}: {
+  src: string
+  alt: string
+  large?: boolean
+}) {
+  const [broken, setBroken] = useState(false)
+
+  if (broken) {
+    return (
+      <div
+        className={`flex items-center justify-center rounded-md border border-dashed border-canvas-border bg-canvas-elevated text-xs text-ink-muted ${
+          large ? 'h-36 w-full' : 'h-12 w-12'
+        }`}
+      >
+        Onizleme yok
+      </div>
+    )
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      referrerPolicy="no-referrer"
+      onError={() => setBroken(true)}
+      className={`rounded-md border border-canvas-border bg-canvas-elevated object-cover ${
+        large ? 'h-36 w-full' : 'h-12 w-12'
+      }`}
+    />
   )
 }
 
