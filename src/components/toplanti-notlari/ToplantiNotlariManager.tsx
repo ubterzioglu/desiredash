@@ -60,14 +60,12 @@ function BulletList({ items, tarih }: { items: string[]; tarih?: string }) {
 }
 
 function SubSection({ baslik, items, tarih }: { baslik: string; items: string[]; tarih?: string }) {
-  const displayTarih = tarih === '12 Nisan' ? '13 Nisan WA' : tarih
-
   return (
     <div className="space-y-2">
       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted opacity-60">
         {baslik}
       </p>
-      <BulletList items={items} tarih={displayTarih} />
+      <BulletList items={items} tarih={tarih} />
     </div>
   )
 }
@@ -82,6 +80,14 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     accentColor: XP_COLORS[0],
     children: (
       <div className="space-y-5">
+        <SubSection
+          tarih="13 Nisan WA"
+          baslik="WA Guncellemeleri"
+          items={[
+            'Loginsiz kullanim secenegi yeniden tartisildi; login zorunlulugu ile anonim akis arasinda MVP karari netlestirilecek.',
+            'Rezervasyon ve check-in akislarinda dolandiricilik onleme kurallari korunacak, uygulama detaylari bir sonraki toplantiya tasindi.',
+          ]}
+        />
         <SubSection
           tarih="12 Nisan"
           baslik="Dinamik Form ve Rezervasyon Kısıtlamaları"
@@ -132,6 +138,14 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="13 Nisan WA"
+          baslik="WA Guncellemeleri"
+          items={[
+            'DB modellemesinin kritikligi tekrar vurgulandi; MVP olsa da yanlis modelin ileride maliyeti artiracagi not edildi.',
+            'Liquibase ile degisiklik takibi ve export dokumantasyonunun ekip icinde standartlasmasi karari tekrarlandi.',
+          ]}
+        />
+        <SubSection
           tarih="12 Nisan"
           baslik="Veritabanı Yapısı (~44 Tablo)"
           items={[
@@ -181,6 +195,14 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="13 Nisan WA"
+          baslik="WA Guncellemeleri"
+          items={[
+            'Domain ve marka tartismalari reklam/konumlandirma tarafini etkiledi; ana marka yuzu DesireMap olarak kalacak yaklasimi agir basti.',
+            'Alternatif domainlerin trafik yonlendirme ve 301 stratejisiyle degerlendirilmesi notlara eklendi.',
+          ]}
+        />
+        <SubSection
           tarih="12 Nisan"
           baslik="Mobil Odaklı Reklam Alanları"
           items={[
@@ -227,6 +249,14 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     accentColor: XP_COLORS[3],
     children: (
       <div className="space-y-5">
+        <SubSection
+          tarih="13 Nisan WA"
+          baslik="WA Guncellemeleri"
+          items={[
+            'Sifresiz login akisi Shopify benzeri model olarak tekrar gundeme geldi, guvenlik ve UX dengesi icin backloga alindi.',
+            'Kullanici dogrulama seviyelerinin asamali acilmasi ve riskli aksiyonlarda ek kontrol uygulanmasi prensibi korundu.',
+          ]}
+        />
         <SubSection
           tarih="12 Nisan"
           baslik="Login Zorunluluğu"
@@ -275,6 +305,14 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="13 Nisan WA"
+          baslik="WA Guncellemeleri"
+          items={[
+            'Dashboard ve dokumantasyon disiplini MVP hizi icin zorunlu kabul edildi; plansiz ilerlemenin maliyeti net sekilde konusuldu.',
+            'Mimariyi kisa vadede netlestirme ve gorev dagilimini yazarak ilerleme prensibi tekrar teyit edildi.',
+          ]}
+        />
+        <SubSection
           tarih="12 Nisan"
           baslik="MVP Önceliği"
           items={[
@@ -322,6 +360,14 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     children: (
       <div className="space-y-5">
         <SubSection
+          tarih="13 Nisan WA"
+          baslik="WA Guncellemeleri"
+          items={[
+            'UBT tarafindan dokuman paylasim ritmi ve commitment beklentisi acik sekilde yinelendi.',
+            'Toplanti oncesi agenda, toplanti sonrasi net aksiyon cikarma ve dashboarda isleme ekibin calisma standardi olarak kabul edildi.',
+          ]}
+        />
+        <SubSection
           tarih="12 Nisan"
           baslik="Baran'ın Öncelikleri"
           items={[
@@ -367,6 +413,15 @@ const ACCORDION_ITEMS: AccordionItem[] = [
     accentColor: '#F5A500',
     children: (
       <div className="space-y-6">
+        <SubSection
+          tarih="13 Nisan WA"
+          baslik="WA Ek Aksiyonlar"
+          items={[
+            'Baran: DB modelleme ve notlari duzenli sekilde dashboarda aktarma.',
+            'Sahin: Altyapi/deployment notlarini ve teknik kararlarini toplanti notlarina isleme.',
+            'UBT: Dashboard kapsamini genisletip milestones, proje takip ve proje status bloklarini operasyonel hale getirme.',
+          ]}
+        />
         <SubSection
           tarih="12 Nisan"
           baslik="Baran Kaplan"
