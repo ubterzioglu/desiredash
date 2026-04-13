@@ -295,6 +295,9 @@ Google Drive logosunu yukle, linki buraya yapistir ve kimsin seceneginizi sec. H
   'toplanti-notlari-listesi': `Bu alan toplanti notlari icin ayrilmistir.
 
 Ilk etapta bos basliyor; ilerleyen fazda toplanti notlari ve karar ozutleri burada tutulacak.`,
+  'links-listesi': `Bu alan artik tek merkezden yonetiliyor.
+
+Referans linkleri, harici kaynaklar ve hizli erisimleri burada tutabilirsin. Asagidaki form ve liste uzerinden yeni link eklenebilir, duzenlenebilir ve silinebilir.`,
   'seo-geo-keyword': `Yapilacaklar:
 - Hedef anahtar kelimeleri belirle (Almanya, sehir bazli)
 - Rakiplerin hangi kelimelerde siralandığını analiz et
@@ -470,6 +473,8 @@ export function getDocCategoryContentView(categorySlug: DocCategorySlug): Conten
                 ? 'Contacts alani tek intro kart ve canli liste yonetimiyle calisir.'
               : category.slug === 'sosyal-medya'
                 ? 'Sosyal medya alani tek intro kart ve takipci odakli liste yonetimiyle calisir.'
+              : category.slug === 'links'
+                ? 'Links alani tek intro kart ve canli liste yonetimiyle calisir.'
               : 'Bu alan yeni icerikler icin acildi. Simdilik temiz bir baslangic durumu korunuyor.',
         columns: 1,
         cards: category.items.map((item, index) => ({

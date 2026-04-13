@@ -1,0 +1,39 @@
+- generic [active]:
+  - alert [ref=e1]
+  - dialog [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - heading "Build Error" [level=1] [ref=e7]
+        - paragraph [ref=e8]: Failed to compile
+        - generic [ref=e9]:
+          - text: Next.js (14.2.0) is outdated
+          - link "(learn more)" [ref=e11] [cursor=pointer]:
+            - /url: https://nextjs.org/docs/messages/version-staleness
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - link "./src/lib/docs-hub.ts" [ref=e14] [cursor=pointer]:
+            - text: ./src/lib/docs-hub.ts
+            - img [ref=e15]
+          - generic [ref=e19]:
+            - generic [ref=e20]: "Error:"
+            - text: x
+            - generic [ref=e21]: Expression expected ,-[
+            - text: C:\temp_private\desiredash\src\lib\docs-hub.ts
+            - generic [ref=e22]: :516:1]
+            - text: "516"
+            - generic [ref=e23]: "| href: '#proje-status-pr',"
+            - text: "517"
+            - generic [ref=e24]: "| categorySlug: 'proje-status',"
+            - text: "518"
+            - generic [ref=e25]: "| },"
+            - text: "519"
+            - generic [ref=e26]: "| }, :"
+            - generic [ref=e27]: ^
+            - text: "520"
+            - generic [ref=e28]: "| },"
+            - text: "521"
+            - generic [ref=e29]: "| ]"
+            - text: "521"
+            - generic [ref=e30]: "| `---- Caused by: Syntax Error"
+        - contentinfo [ref=e31]:
+          - paragraph [ref=e32]: This error occurred during the build process and can only be dismissed by fixing the error.

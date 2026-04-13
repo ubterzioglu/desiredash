@@ -66,17 +66,29 @@ export default function Sidebar({
           <div className="space-y-1">
             {orderedDocsCategories.map((category, index) => {
               const Icon = getDocIcon(category.iconKey)
+              const isUnready = UNREADY_CATEGORY_SLUGS.includes(category.slug)
+              const prevCategory = index > 0 ? orderedDocsCategories[index - 1] : null
+              const isPrevUnready = prevCategory ? UNREADY_CATEGORY_SLUGS.includes(prevCategory.slug) : false
+              const shouldShowUnreadyHeader = isUnready && !isPrevUnready
 
               return (
-                <SidebarCategory
-                  key={category.slug}
-                  slug={category.slug}
-                  title={category.label}
-                  icon={<Icon size={13} />}
-                  active={category.slug === activeCategorySlug}
-                  linkRef={index === 0 ? initialFocusRef : undefined}
-                  onSelect={onClose}
-                />
+                <div key={category.slug}>
+                  {shouldShowUnreadyHeader && (
+                    <div className="pt-4 pb-2">
+                      <h3 className="px-3 text-xs font-semibold text-content-secondary uppercase tracking-wider">
+                        HENÜZ HAZIR OLMAYAN BÖLÜMLER
+                      </h3>
+                    </div>
+                  )}
+                  <SidebarCategory
+                    slug={category.slug}
+                    title={category.label}
+                    icon={<Icon size={13} />}
+                    active={category.slug === activeCategorySlug}
+                    linkRef={index === 0 ? initialFocusRef : undefined}
+                    onSelect={onClose}
+                  />
+                </div>
               )
             })}
           </div>

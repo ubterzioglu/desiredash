@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { ArrowLeft, Search } from 'lucide-react'
 import BrainstormingManager from '../brainstorming/BrainstormingManager'
 import ContactManager from '../contacts/ContactManager'
+import LinksManager from '../links/LinksManager'
 import LogoFikirlerManager from '../logo-fikirler/LogoFikirlerManager'
 import MvpManager from '../mvp/MvpManager'
 import SocialMediaManager from '../social-media/SocialMediaManager'
@@ -39,7 +40,8 @@ export default function MainContent({ categorySlug }: MainContentProps) {
     categorySlug === 'logo-fikirler' ||
     categorySlug === 'toplanti-notlari' ||
     categorySlug === 'mvp' ||
-    categorySlug === 'brainstorming'
+    categorySlug === 'brainstorming' ||
+    categorySlug === 'links'
   const currentCategory = categorySlug
     ? getDocsCategories().find((category) => category.slug === categorySlug)
     : undefined
@@ -102,6 +104,7 @@ export default function MainContent({ categorySlug }: MainContentProps) {
         {categorySlug === 'logo-fikirler' && <LogoFikirlerManager />}
         {categorySlug === 'toplanti-notlari' && <ToplantiNotlariManager />}
         {categorySlug === 'brainstorming' && <BrainstormingManager />}
+        {categorySlug === 'links' && <LinksManager />}
       </article>
     )
   }

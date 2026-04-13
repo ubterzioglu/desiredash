@@ -1,0 +1,68 @@
+[     425ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/links:0
+[     689ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[     732ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  x Expression expected
+     ,-[C:\temp_private\desiredash\src\lib\docs-hub.ts:516:1]
+ 516 |         href: '#proje-status-pr',
+ 517 |         categorySlug: 'proje-status',
+ 518 |       },
+ 519 |     },
+     :     ^
+ 520 |   },
+ 521 | ]
+ 521 | 
+     `----
+
+
+Caused by:
+    Syntax Error
+    at processResult (file://C:\temp_private\desiredash\node_modules\next\dist\compiled\webpack\bundle5.js:28:400590)
+    at <unknown> (file://C:\temp_private\desiredash\node_modules\next\dist\compiled\webpack\bundle5.js:28:402302)
+    at <unknown> (file://C:\temp_private\desiredash\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:8645)
+    at <unknown> (file://C:\temp_private\desiredash\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5019)
+    at r.callback (file://C:\temp_private\desiredash\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:4039)
+[     723ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:45
+[     726ms] [ERROR] ./src/lib/docs-hub.ts
+Error: 
+  x Expression expected
+     ,-[C:\temp_private\desiredash\src\lib\docs-hub.ts:516:1]
+ 516 |         href: '#proje-status-pr',
+ 517 |         categorySlug: 'proje-status',
+ 518 |       },
+ 519 |     },
+     :     ^
+ 520 |   },
+ 521 | ]
+ 521 | 
+     `----
+
+Caused by:
+    Syntax Error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[     743ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/favicon.ico:0
+[   54441ms] [ERROR] ./src/lib/docs-hub.ts
+Error: 
+  x Expression expected
+     ,-[C:\temp_private\desiredash\src\lib\docs-hub.ts:516:1]
+ 516 |         href: '#proje-status-pr',
+ 517 |         categorySlug: 'proje-status',
+ 518 |       },
+ 519 |     },
+     :     ^
+ 520 |   },
+ 521 | ]
+ 521 | 
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/lib/docs-hub.ts
+./src/lib/docs-data.ts
+./src/components/layout/MainContent.tsx @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[   54442ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:221
+[   55271ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3000/_next/static/webpack/9bd3884a28df9511.webpack.hot-update.json:0
+[   55271ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/hot-reloader-client.js:349
+[   56029ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[   56161ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:45

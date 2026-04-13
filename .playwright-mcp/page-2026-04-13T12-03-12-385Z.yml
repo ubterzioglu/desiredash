@@ -1,0 +1,118 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - link "Skip to main content" [ref=e4] [cursor=pointer]:
+      - /url: "#docs-main-content"
+    - banner [ref=e5]:
+      - generic [ref=e11]:
+        - generic [ref=e12]:
+          - button "Sidebar'ı kapat" [expanded] [ref=e13] [cursor=pointer]:
+            - img [ref=e14]
+          - link "desiremap.de" [ref=e17] [cursor=pointer]:
+            - /url: /
+        - generic [ref=e19]: DesireMap'le zevkten dört köşe olun...
+    - complementary [ref=e20]:
+      - navigation "Documentation navigation" [ref=e21]:
+        - generic [ref=e22]:
+          - link "BU SAYFA NEDEN VAR?" [ref=e25] [cursor=pointer]:
+            - /url: /neden-var
+            - img [ref=e27]
+            - generic [ref=e30]: BU SAYFA NEDEN VAR?
+          - link "TODO" [ref=e33] [cursor=pointer]:
+            - /url: /todo
+            - img [ref=e35]
+            - generic [ref=e38]: TODO
+          - link "MVP" [ref=e41] [cursor=pointer]:
+            - /url: /mvp
+            - img [ref=e43]
+            - generic [ref=e45]: MVP
+          - link "SON GUNCELLEMELER" [ref=e48] [cursor=pointer]:
+            - /url: /son-guncellemeler
+            - img [ref=e50]
+            - generic [ref=e53]: SON GUNCELLEMELER
+          - link "BRAINSTORMING" [ref=e56] [cursor=pointer]:
+            - /url: /brainstorming
+            - img [ref=e58]
+            - generic [ref=e62]: BRAINSTORMING
+          - link "LINKS" [ref=e65] [cursor=pointer]:
+            - /url: /links
+            - img [ref=e67]
+            - generic [ref=e70]: LINKS
+          - link "SEO GEO" [ref=e73] [cursor=pointer]:
+            - /url: /seo-geo
+            - img [ref=e75]
+            - generic [ref=e79]: SEO GEO
+          - link "CONTACTS" [ref=e82] [cursor=pointer]:
+            - /url: /contacts
+            - img [ref=e84]
+            - generic [ref=e87]: CONTACTS
+          - link "SOSYAL MEDYA" [ref=e90] [cursor=pointer]:
+            - /url: /sosyal-medya
+            - img [ref=e92]
+            - generic [ref=e96]: SOSYAL MEDYA
+          - link "TOPLANTI NOTLARI" [ref=e99] [cursor=pointer]:
+            - /url: /toplanti-notlari
+            - img [ref=e101]
+            - generic [ref=e104]: TOPLANTI NOTLARI
+          - link "LOGO FIKIRLER" [ref=e107] [cursor=pointer]:
+            - /url: /logo-fikirler
+            - img [ref=e109]
+            - generic [ref=e113]: LOGO FIKIRLER
+          - generic [ref=e114]:
+            - heading "HENÜZ HAZIR OLMAYAN BÖLÜMLER" [level=3] [ref=e116]
+            - link "MILESTONES" [ref=e118] [cursor=pointer]:
+              - /url: /milestones
+              - img [ref=e120]
+              - generic [ref=e122]: MILESTONES
+          - link "PROJE TAKIP" [ref=e125] [cursor=pointer]:
+            - /url: /proje-takip
+            - img [ref=e127]
+            - generic [ref=e130]: PROJE TAKIP
+          - link "PROJE STATUS" [ref=e133] [cursor=pointer]:
+            - /url: /proje-status
+            - img [ref=e135]
+            - generic [ref=e137]: PROJE STATUS
+    - main [ref=e138]:
+      - article [ref=e141]:
+        - link "Workspace ana sayfasina don" [ref=e142] [cursor=pointer]:
+          - /url: /
+          - img [ref=e143]
+          - text: Workspace ana sayfasina don
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - paragraph [ref=e151]: Blok 01
+              - generic [ref=e152]: LINKS
+            - link "Permalink" [ref=e153] [cursor=pointer]:
+              - /url: /links#links-kaynaklar
+              - generic [ref=e154]:
+                - text: Permalink
+                - img [ref=e155]
+          - generic [ref=e157]:
+            - heading "Kaynaklar" [level=3] [ref=e158]
+            - paragraph [ref=e159]: Blank Board notlari ve ilerde eklenecek referans linkleri icin alan.
+            - paragraph [ref=e160]: "Kaynak: - Blank Board PDF notlari Bu bolum ileride: - dokuman linkleri - figma / board linkleri - harici arac linkleri - operasyonel referanslar icin kullanilacak."
+        - region "Links" [ref=e161]:
+          - generic [ref=e162]:
+            - heading "Links" [level=2] [ref=e163]
+            - paragraph [ref=e164]: Referans linklerini, harici kaynaklari ve hizli erisimleri tek yerden yonet.
+          - generic [ref=e165]:
+            - generic [ref=e166]:
+              - text: Kim ekledi
+              - combobox "Kim ekledi" [ref=e167]:
+                - option "Şahin" [selected]
+                - option "UBT"
+                - option "Baran"
+                - option "Diğer"
+            - generic [ref=e168]:
+              - text: Aciklama
+              - textbox "Aciklama" [ref=e169]:
+                - /placeholder: Link aciklamasi
+            - generic [ref=e170]:
+              - text: Link
+              - textbox "Link" [ref=e171]:
+                - /placeholder: https://...
+            - button "Yeni ekle" [ref=e173] [cursor=pointer]:
+              - img [ref=e174]
+              - text: Yeni ekle
+          - generic [ref=e176]: Link listesi yukleniyor...
+  - alert [ref=e177]

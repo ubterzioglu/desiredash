@@ -10,7 +10,17 @@ CREATE TABLE IF NOT EXISTS logo_fikirler (
 
 ALTER TABLE logo_fikirler ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Allow all" ON logo_fikirler
-  FOR ALL
-  USING (true)
-  WITH CHECK (true);
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies
+    WHERE tablename = 'logo_fikirler'
+      AND policyname = 'Allow all'
+  ) THEN
+    CREATE POLICY "Allow all" ON logo_fikirler
+      FOR ALL
+      USING (true)
+      WITH CHECK (true);
+  END IF;
+END
+$$;
