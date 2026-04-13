@@ -1,9 +1,15 @@
 import type { RefObject } from 'react'
 import { useRouter } from 'next/router'
 import SidebarCategory from './SidebarCategory'
-import { getDocsCategories } from '@/lib/docs-data'
+import { getDocsCategories, type DocCategorySlug } from '@/lib/docs-data'
 import { getDocIcon } from '@/lib/docs-icons'
 import { getDocsRouteState } from '@/lib/docs-navigation'
+
+const UNREADY_CATEGORY_SLUGS: DocCategorySlug[] = [
+  'milestones',
+  'proje-takip',
+  'proje-status',
+]
 
 interface SidebarProps {
   isDesktopViewport: boolean
@@ -23,6 +29,16 @@ export default function Sidebar({
   const router = useRouter()
   const { activeCategorySlug } = getDocsRouteState(router.asPath)
   const docsCategories = getDocsCategories()
+  const orderedDocsCategories = [...docsCategories].sort((a, b) => {
+    const aIsUnready = UNREADY_CATEGORY_SLUGS.includes(a.slug)
+    const bIsUnready = UNREADY_CATEGORY_SLUGS.includes(b.slug)
+
+    if (aIsUnready === bIsUnready) {
+      return 0
+    }
+
+    return aIsUnready ? 1 : -1
+  })
   const isSidebarVisible = isDesktopViewport ? !isCollapsed : isOpen
 
   return (
@@ -48,7 +64,7 @@ export default function Sidebar({
           className="h-full overflow-y-auto px-3 py-4 [overscroll-behavior:contain]"
         >
           <div className="space-y-1">
-            {docsCategories.map((category, index) => {
+            {orderedDocsCategories.map((category, index) => {
               const Icon = getDocIcon(category.iconKey)
 
               return (

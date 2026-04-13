@@ -1,7 +1,6 @@
 import AccordionCard, { type AccordionItem } from '../ui/AccordionCard'
 
 const XP_COLORS = ['#CC3300', '#4CAF50', '#1A6DC2', '#F5A500'] as const
-const BUGUN_TARIH_WA = '13 Nisan 2026 · WA'
 
 // ─── Özet maddeleri ──────────────────────────────────────────────────────────
 
@@ -61,12 +60,14 @@ function BulletList({ items, tarih }: { items: string[]; tarih?: string }) {
 }
 
 function SubSection({ baslik, items, tarih }: { baslik: string; items: string[]; tarih?: string }) {
+  const displayTarih = tarih === '12 Nisan' ? '13 Nisan WA' : tarih
+
   return (
     <div className="space-y-2">
       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted opacity-60">
         {baslik}
       </p>
-      <BulletList items={items} tarih={tarih} />
+      <BulletList items={items} tarih={displayTarih} />
     </div>
   )
 }
@@ -74,61 +75,6 @@ function SubSection({ baslik, items, tarih }: { baslik: string; items: string[];
 // ─── Accordion veri tanımı ───────────────────────────────────────────────────
 
 const ACCORDION_ITEMS: AccordionItem[] = [
-  {
-    id: 'wa-transkript-ozet',
-    title: 'WhatsApp Transkript Ozeti',
-    badge: '5 Baslik',
-    accentColor: XP_COLORS[2],
-    children: (
-      <div className="space-y-5">
-        <SubSection
-          tarih={BUGUN_TARIH_WA}
-          baslik="Domain ve Marka Kararlari"
-          items={[
-            'Ana marka ekseni DesireMap olarak korunuyor; alternatif domainler yedek/yonlendirme mantiginda degerlendiriliyor.',
-            'desirehub.de ve bazi alternatifler icin alim/yonlendirme senaryolari konusuldu; 301 yonlendirme notu acikca geciyor.',
-            'Marka algisi acisindan ana landing yuzunun DesireMap kalmasi, farkli alan adlarinin ise trafik yakalama amaciyla baglanmasi onerildi.',
-          ]}
-        />
-        <SubSection
-          tarih={BUGUN_TARIH_WA}
-          baslik="Altyapi ve Teknik Basliklar"
-          items={[
-            'Backend icin subdomain plani (api.desiremap.de) acildi ve API ayrimi netlestirildi.',
-            'Deployment tarafinda Coolify gecisi ve port problemleri not edildi; kurulum sirasi icin operasyonel dersler cikarildi.',
-            'DB modelinin MVPde kritik oldugu, Liquibase ile degisiklik takibinin dusunuldugu ve esnek/gevsek bagli tasarimin onemli oldugu tekrarlandi.',
-          ]}
-        />
-        <SubSection
-          tarih={BUGUN_TARIH_WA}
-          baslik="Dashboard ve Dokumantasyon Disiplini"
-          items={[
-            'Dash uzerinde tek merkezli proje takip yapisi kuruluyor; toplanti notlari + WA transkriptlerinin haftalik islenmesi karari var.',
-            'Ekip ici en buyuk blokaj olarak plansiz ilerleme ve daginik notlar tekrar tekrar gundeme geldi.',
-            'Timeline, deadline, contact list, gorev dagilimi, MVP versiyonlama ve backend/frontend status panelleri zorunlu takip maddesi oldu.',
-          ]}
-        />
-        <SubSection
-          tarih={BUGUN_TARIH_WA}
-          baslik="Rol Dagilimi ve Beklenti Netlestirme"
-          items={[
-            'Baran tarafinda DB design ve teknik omurga, Sahin tarafinda altyapi ve teknik koordinasyon, UBT tarafinda dashboard, test/PR ve operasyonel takip rolu netlestirildi.',
-            'Toplanti oncesi agenda/TODO hazirlanmasi ve gorusme sonrasinda ciktilarin sisteme yazilmasi ekip standardi olarak benimsendi.',
-            'Takim ici iletisimde commitment, dokuman paylasimi ve duzenli ilerleme raporu beklentisi acik bicimde vurgulandi.',
-          ]}
-        />
-        <SubSection
-          tarih={BUGUN_TARIH_WA}
-          baslik="Kisa Aksiyon Listesi"
-          items={[
-            'Haftalik WA transkriptlerini temizleyip Toplanti Notlari altinda standart kategorilere islemek.',
-            'Bir sonraki toplanti icin toplanti oncesi agenda + toplanti sonrasi action item formatini sabitlemek.',
-            'MVP cikisina kadar dashboardta minimum zorunlu alanlari (Milestones, Proje Takip, Proje Status) aktif sekilde doldurmak.',
-          ]}
-        />
-      </div>
-    ),
-  },
   {
     id: 'rezervasyon-event',
     title: 'Rezervasyon ve Event Yönetimi',
@@ -471,7 +417,7 @@ export default function ToplantiNotlariManager() {
           Toplantı Notları
         </h2>
         <p className="max-w-3xl text-sm text-ink-muted">
-          13 Nisan 2026 - WA + 12 Nisan 2026 toplanti notlari birlesik ozeti: rezervasyon sistemi, veritabani tasarimi, dashboard disiplini ve MVP stratejisi.
+          13 Nisan 2026 - WA: rezervasyon sistemi, veritabani tasarimi, reklam modeli ve MVP stratejisi uzerine toplanti ozeti.
         </p>
       </div>
 
@@ -489,7 +435,7 @@ export default function ToplantiNotlariManager() {
                   Bu sayfa toplantı notlarının yapılandırılmış özetini içerir. Her ana başlık, toplantıda ele alınan bir konuyu temsil eder.
                 </p>
                 <p>
-                  Her maddenin başındaki tarih etiketi, o kararın hangi toplantıda alındığını gösterir. WA etiketli maddeler WhatsApp transkriptlerinden derlenmiştir; yeni toplantılar eklendikçe mevcut başlıklara tarihli girdiler eklenir.
+                  Her maddenin başındaki tarih etiketi, o kararın hangi toplantıda alındığını gösterir. Yeni toplantılar eklendiğinde mevcut başlıklara yeni tarihli maddeler eklenir — böylece hangi kararın ne zaman alındığı zaman içinde görünür hale gelir.
                 </p>
               </div>
             ),
@@ -522,7 +468,7 @@ export default function ToplantiNotlariManager() {
       </div>
 
       {/* Accordion */}
-      <AccordionCard items={ACCORDION_ITEMS} defaultOpenId="wa-transkript-ozet" />
+      <AccordionCard items={ACCORDION_ITEMS} defaultOpenId="rezervasyon-event" />
     </section>
   )
 }
