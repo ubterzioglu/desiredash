@@ -310,7 +310,7 @@ export const docsCategories: DocCategoryDefinition[] = [
   },
   {
     slug: 'milestones',
-    label: 'MILESTONES',
+    label: 'HAZIR DEGIL - MILESTONES',
     shortDescription: 'Teslim tarihleri, ana fazlar ve kilometre taslari.',
     iconKey: 'calendar',
     defaultExpanded: false,
@@ -331,7 +331,7 @@ export const docsCategories: DocCategoryDefinition[] = [
   },
   {
     slug: 'proje-takip',
-    label: 'PROJE TAKIP',
+    label: 'HAZIR DEGIL - PROJE TAKIP',
     shortDescription: 'Durum, blokaj ve sahiplik bazli genel proje takibi.',
     iconKey: 'home',
     defaultExpanded: false,
@@ -408,7 +408,7 @@ export const docsCategories: DocCategoryDefinition[] = [
   },
   {
     slug: 'proje-status',
-    label: 'PROJE STATUS',
+    label: 'HAZIR DEGIL - PROJE STATUS',
     shortDescription: 'Teknik akis icin backend ve frontend durum bolumleri.',
     iconKey: 'test-tube',
     defaultExpanded: false,
